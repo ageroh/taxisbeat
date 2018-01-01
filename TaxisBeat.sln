@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxisBeat", "TaxisBeat\TaxisBeat.csproj", "{484F5159-D6F0-41FC-ACAA-F3C52C806071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxisBeat.Tests", "TaxisBeat.Tests\TaxisBeat.Tests.csproj", "{D3E5998C-FA55-4D2D-9411-FD4BCB2554EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{484F5159-D6F0-41FC-ACAA-F3C52C806071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{484F5159-D6F0-41FC-ACAA-F3C52C806071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{484F5159-D6F0-41FC-ACAA-F3C52C806071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{484F5159-D6F0-41FC-ACAA-F3C52C806071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E5998C-FA55-4D2D-9411-FD4BCB2554EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E5998C-FA55-4D2D-9411-FD4BCB2554EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E5998C-FA55-4D2D-9411-FD4BCB2554EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E5998C-FA55-4D2D-9411-FD4BCB2554EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABD8C863-9302-41DF-9459-71C4A3C45A2E}
+	EndGlobalSection
+EndGlobal
