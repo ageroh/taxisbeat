@@ -253,8 +253,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TEMP\ClientDependency\DESKTOP-HME67AK-6f3cd362b335c92d11100b2674528dd6-map.xml" />
-    <Content Include="App_Data\TEMP\DistCache\LMW3SVC2ROOT-lastsynced.txt" />
     <Content Include="App_Data\Umbraco.sdf" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.controller.js" />
     <Content Include="App_Plugins\ModelsBuilder\modelsbuilder.htm" />
@@ -345,19 +343,6 @@
     <Content Include="config\404handlers.config" />
     <Content Include="App_Data\Models\all.dll.path" />
     <Content Include="App_Data\Models\models.hash" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\External\Index\segments.gen" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\External\Index\segments_2" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\External\Index\write.lock" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\External\Index\_0.cfs" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\InternalMember\Index\segments.gen" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\InternalMember\Index\segments_1" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\InternalMember\Index\write.lock" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\Internal\Index\segments.gen" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\Internal\Index\segments_2" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\Internal\Index\write.lock" />
-    <Content Include="App_Data\TEMP\ExamineIndexes\Internal\Index\_0.cfs" />
-    <Content Include="App_Data\TEMP\PluginCache\umbraco-plugins.DESKTOP-HME67AK.hash" />
-    <Content Include="App_Data\TEMP\PluginCache\umbraco-plugins.DESKTOP-HME67AK.list" />
     <Content Include="App_Data\umbraco.config" />
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
@@ -406,7 +391,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\TEMP\Install\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
