@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "a50eb00bd9588835")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "b0cfc80637f1e779")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -609,9 +609,9 @@ namespace Umbraco.Web.PublishedContentModels
 		/// Your Address: Plot your address on the map and it'll be displayed on the contact page
 		///</summary>
 		[ImplementPropertyType("map")]
-		public object Map
+		public Terratype.Models.Model Map
 		{
-			get { return this.GetPropertyValue("map"); }
+			get { return this.GetPropertyValue<Terratype.Models.Model>("map"); }
 		}
 
 		///<summary>

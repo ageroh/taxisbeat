@@ -195,6 +195,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Terratype, Version=1.0.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Terratype.1.0.14\lib\net45\Terratype.dll</HintPath>
+    </Reference>
     <Reference Include="TidyNet, Version=1.0.0.0, Culture=neutral">
       <HintPath>..\packages\UmbracoCms.Core.7.7.7\lib\net45\TidyNet.dll</HintPath>
     </Reference>
@@ -360,6 +363,14 @@
     <Content Include="App_Browsers\w3cvalidator.browser" />
     <Content Include="App_Plugins\Terratype\package.manifest" />
     <Content Include="App_Plugins\Terratype\Views\grid.cshtml" />
+    <Content Include="fonts\CYN_Coaching\CYN_Coaching.otf" />
+    <Content Include="fonts\CYN_Coaching\CYN_CoachingSlanted.otf" />
+    <Content Include="fonts\CYN_Reset_otf\CYN_Reset.otf" />
+    <Content Include="fonts\CYN_Reset_otf\CYN_ResetBold.otf" />
+    <Content Include="fonts\CYN_Reset_otf\CYN_ResetBoldSlanted.otf" />
+    <Content Include="fonts\CYN_Reset_otf\CYN_ResetLight.otf" />
+    <Content Include="fonts\CYN_Reset_otf\CYN_ResetLightSlanted.otf" />
+    <Content Include="fonts\CYN_Reset_otf\CYN_ResetSlanted.otf" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
