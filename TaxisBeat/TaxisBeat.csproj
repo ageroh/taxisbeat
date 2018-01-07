@@ -304,10 +304,19 @@
     <Content Include="config\Lang\ru-RU.user.xml" />
     <Content Include="config\Lang\sv-SE.user.xml" />
     <Content Include="config\Lang\zh-CN.user.xml" />
-    <Content Include="css\umbraco-starterkit-style.css" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\dark.css" />
+    <Content Include="css\font-icons.css" />
+    <Content Include="css\magnific-popup.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\style.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="scripts\umbraco-starterkit-app.js" />
+    <Content Include="images\landing\landing1.jpg" />
+    <Content Include="js\functions.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\plugins.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -380,6 +389,8 @@
     <Content Include="fonts\ACTypoGrotesk\__MACOSX\ACTypoGrotesk\._ACTypoGrotesk.otf" />
     <Content Include="fonts\ACTypoGrotesk\__MACOSX\ACTypoGrotesk\._ACTypoGrotesk.ttf" />
     <Content Include="fonts\ACTypoGrotesk\__MACOSX\ACTypoGrotesk\._readme.rtf" />
+    <Content Include="css\style.less" />
+    <Content Include="css\style.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
