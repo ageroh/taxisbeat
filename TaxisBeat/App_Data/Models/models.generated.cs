@@ -19,12 +19,12 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "fba3e93c4288b105")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "c7bcbf7d9c9c06ce")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	// Mixin content Type 1091 with alias "contentBase"
+	// Mixin content Type 1082 with alias "contentBase"
 	/// <summary>Content Base</summary>
 	public partial interface IContentBase : IPublishedContent
 	{
@@ -290,7 +290,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 	}
 
-	// Mixin content Type 1094 with alias "navigationBase"
+	// Mixin content Type 1085 with alias "navigationBase"
 	/// <summary>Navigation Base</summary>
 	public partial interface INavigationBase : IPublishedContent
 	{
@@ -579,6 +579,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Pick a Contact Form: If Umbraco Forms is installed you'll be able to select a form here.
+		///</summary>
+		[ImplementPropertyType("contactForm")]
+		public string ContactForm
+		{
+			get { return this.GetPropertyValue<string>("contactForm"); }
+		}
+
+		///<summary>
 		/// Contact Form Header
 		///</summary>
 		[ImplementPropertyType("contactFormHeader")]
@@ -594,6 +603,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public IHtmlString ContactIntro
 		{
 			get { return this.GetPropertyValue<IHtmlString>("contactIntro"); }
+		}
+
+		///<summary>
+		/// Your Address: Plot your address on the map and it'll be displayed on the contact page
+		///</summary>
+		[ImplementPropertyType("map")]
+		public Terratype.Models.Model Map
+		{
+			get { return this.GetPropertyValue<Terratype.Models.Model>("map"); }
 		}
 
 		///<summary>
