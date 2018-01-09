@@ -6,12 +6,12 @@
 }
 <ul>
     <li class="@Html.Raw(Model.Content.Id == site.Id ? "current" : "")">
-        <a href="@site.Url"><div>@site.Name</div></a>
+        <a href="@site.Url"><div>@site.GetPropertyValue("pageTitle")</div></a>
     </li>
     @foreach (var item in selection)
     {
         <li class="@(item.IsAncestorOrSelf(Model.Content) ? "current" : null)">
-            <a href="@item.Url"><div>@item.Name</div></a>
+            <a href="@item.Url"><div>@item.GetPropertyValue("pageTitle")</div></a>
         </li>
     }
 </ul>

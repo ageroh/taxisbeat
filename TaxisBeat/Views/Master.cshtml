@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
     <link rel="stylesheet" href="/css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="/css/colors.css" type="text/css" />
     <link rel="stylesheet" href="/css/font-icons.css" type="text/css" />
     <link rel="stylesheet" href="/css/animate.css" type="text/css" />
     <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css" />
@@ -40,20 +41,23 @@
 
 </head>
 
-<body class="stretched dark">
+<body class="stretched">
 
     <div id="wrapper" class="clearfix">
-        <header id="header" class="transparent-header dark full-header" data-sticky-class="not-dark">
+        <header id="header">
             <div id="header-wrap">
                 <div class="container clearfix">
                     <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
                         <div id="logo">
+                        @if (home.SiteLogoRetina != null && !string.IsNullOrEmpty(home.SiteLogoRetina.Url))
+                        { 
+                            <a href="/" class="retina-logo" data-dark-logo="@home.SiteLogoRetina.Url">
+                                <img src="@home.SiteLogoRetina.Url" alt="@home.Sitename">
+                            </a>
+                        }
                         @if (home.SiteLogo != null && !string.IsNullOrEmpty(home.SiteLogo.Url))
                         {
-                            <a href="index.html" class="standard-logo" data-dark-logo="@home.SiteLogo.Url">
-                                <img src="@home.SiteLogo.Url" alt="@home.Sitename">
-                            </a>
-                            <a href="index.html" class="retina-logo" data-dark-logo="@home.SiteLogo.Url">
+                            <a href="/" class="standard-logo" data-dark-logo="@home.SiteLogo.Url">
                                 <img src="@home.SiteLogo.Url" alt="@home.Sitename">
                             </a>
                         }
@@ -63,58 +67,29 @@
                         }
                     </div>
 
+					<div id="top-account" class="dropdown">
+						<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
+						<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+							<li><a href="#">To Προφίλ Μου</a></li>
+							<li><a href="#">Αιτήσεις <span class="badge">5</span></a></li>
+							<li><a href="#">Νέα Αίτηση</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Αποσύνδεση <i class="icon-signout"></i></a></li>
+						</ul>
+					</div>
+
                     <nav id="primary-menu">
                         @Html.Partial("~/Views/Partials/Navigation/TopNavigation.cshtml")
-                        <div id="top-cart">
-                            <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
-                            <div class="top-cart-content">
-                                <div class="top-cart-title">
-                                    <h4>Shopping Cart</h4>
-                                </div>
-                                <div class="top-cart-items">
-                                    <div class="top-cart-item clearfix">
-                                        <div class="top-cart-item-image">
-                                            <a href="#"><img src="images/shop/small/1.jpg" alt="Blue Round-Neck Tshirt" /></a>
-                                        </div>
-                                        <div class="top-cart-item-desc">
-                                            <a href="#">Blue Round-Neck Tshirt</a>
-                                            <span class="top-cart-item-price">$19.99</span>
-                                            <span class="top-cart-item-quantity">x 2</span>
-                                        </div>
-                                    </div>
-                                    <div class="top-cart-item clearfix">
-                                        <div class="top-cart-item-image">
-                                            <a href="#"><img src="images/shop/small/6.jpg" alt="Light Blue Denim Dress" /></a>
-                                        </div>
-                                        <div class="top-cart-item-desc">
-                                            <a href="#">Light Blue Denim Dress</a>
-                                            <span class="top-cart-item-price">$24.99</span>
-                                            <span class="top-cart-item-quantity">x 3</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="top-cart-action clearfix">
-                                    <span class="fleft top-checkout-price">$114.95</span>
-                                    <button class="button button-3d button-small nomargin fright">View Cart</button>
-                                </div>
-                            </div>
-                        </div><!-- #top-cart end -->
-                        <!-- Top Search
-    ============================================= -->
-                        <div id="top-search">
+                        @*<div id="top-search">
                             <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
                             <form action="search.html" method="get">
                                 <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
                             </form>
-                        </div><!-- #top-search end -->
-
-                    </nav><!-- #primary-menu end -->
-
+                        </div>*@
+                    </nav>
                 </div>
-
             </div>
-
-        </header><!-- #header end -->
+        </header>
 
         @RenderBody()
 
@@ -127,9 +102,9 @@
     <!-- External JavaScripts
     ============================================= -->
     @*<script src="@Url.Content("~/scripts/umbraco-starterkit-app.js")"></script>*@
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/plugins.js"></script>
+    <script type="text/javascript" src="/js/functions.js"></script>
     <script>
         $(function () {
             $("#side-navigation").tabs({ show: { effect: "fade", duration: 400 } });
