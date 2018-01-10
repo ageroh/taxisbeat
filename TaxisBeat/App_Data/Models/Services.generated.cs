@@ -46,7 +46,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Default Currency: This is just used to prefix pricing
+		/// Currency: This is just used to prefix pricing
 		///</summary>
 		[ImplementPropertyType("defaultCurrency")]
 		public string DefaultCurrency
