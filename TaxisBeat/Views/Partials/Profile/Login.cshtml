@@ -1,0 +1,31 @@
+﻿@using Umbraco.Web
+@model LoginModel
+@using (Html.BeginUmbracoForm<AuthSurfaceController>("Validate", null, new { @class = "login-form", @id = "login-form" }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("CurrentPageId", UmbracoContext.Current.PageId.Value)
+    <div class="col_full">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control required not-dark", @id = "js-loginform-username" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div class="col_full">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control required not-dark", @id = "js-loginform-password" })
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <a class="forgot-password" id="js-forgotpassword-btn" href="javascript: void(0);">Forgot Password?</a>
+    <div class="col_full">
+        <button class="button button-3d button-torch-red nomargin button-long button-full-width" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+    </div>
+    <span id="target-login-result" style="color:#ff0042; font-weight:400; display:none;"></span>
+}
+<div class="line line-sm"></div>
+@Html.Partial("Profile/FacebookLogin")
+<div class="line line-sm"></div>
+<div class="col_full center notoppadding notopmargin">
+    <label>You don't have an account?</label>
+    <a class="color center" id="js-registerform-btn" style="display: block;" href="javascript: void(0);">
+        Register NOW!
+    </a>
+</div>

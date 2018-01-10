@@ -1,0 +1,132 @@
+﻿@using Umbraco.Web;
+@model ProfileViewModel
+@{ 
+    // Set correctly the Culture
+    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Model.Lang);
+}
+<div id="js-profile-form-wrapper">
+    <p class="">Sub heading</p>
+    @using (Html.BeginUmbracoForm<ProfileSurfaceController>("Update", null, new { @class = "js-profile-form", @id = "js-profile-form" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.Hidden("Lang", Model.Lang)
+
+        <div class="form-process" id="js-profile-process"></div>
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.Surname)
+            @Html.TextBoxFor(m => m.Surname, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.Surname)
+        </div>
+        <div class="col_one_third col_last">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "sm-form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.MobilePhone)
+            @Html.TextBoxFor(m => m.MobilePhone, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.MobilePhone)
+        </div>
+
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.AmkaNumber)
+            @if (string.IsNullOrWhiteSpace(Model.AmkaNumber) || !ViewData.ModelState.IsValid)
+            {
+                @Html.TextBoxFor(m => m.AmkaNumber, new { @class = "sm-form-control" })
+            }
+            else
+            {
+                @Html.TextBoxFor(m => m.AmkaNumber, new { @class = "sm-form-control", @disabled = "diabled", @readonly  = "readonly"})
+            }
+            @Html.ValidationMessageFor(m => m.AmkaNumber)
+        </div>
+        <div class="col_one_third col_last">
+            @Html.LabelFor(m => m.MemberIdentity)
+            @if (string.IsNullOrWhiteSpace(Model.MemberIdentity) || !ViewData.ModelState.IsValid)
+            {
+                @Html.TextBoxFor(m => m.MemberIdentity, new { @class = "sm-form-control" })
+            }
+            else
+            {
+                @Html.TextBoxFor(m => m.MemberIdentity, new { @class = "sm-form-control", @disabled = "diabled" , @readonly = "readonly" })
+            }
+            @Html.ValidationMessageFor(m => m.MemberIdentity)
+        </div>
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.DateOfBirthStr)
+            @Html.TextBoxFor(m => m.DateOfBirthStr, new { @class = "sm-form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.DateOfBirthStr)
+        </div>
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @class = "sm-form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
+        <div class="col_one_third col_last">
+            @Html.LabelFor(m => m.FavoriteTeamModel.FavoriteTeam)
+            @Html.DropDownListFor(m => m.FavoriteTeamModel.FavoriteTeam, Model.FavoriteTeamModel.FavoriteTeams(Model.Lang), u.s("Forms.SelectDropdownValue", "- Please Select -", Model.Lang), new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.FavoriteTeamModel.FavoriteTeam)
+        </div>
+
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.CompanyUsername)
+            @Html.TextBoxFor(m => m.CompanyUsername, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.CompanyUsername)
+        </div>
+        <div class="col_one_third col_last">
+            @Html.LabelFor(m => m.FacebookUsername)
+            @Html.TextBoxFor(m => m.FacebookUsername, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.FacebookUsername)
+        </div>
+
+        <div class="clear"></div>
+        <h4 class="topmargin-sm">
+            @u.s("Forms.Profile.ChangePasswordLabel", "Change your password if you wish:", Model.Lang)
+        </h4>
+        <div class="col_half">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "sm-form-control", @id = "js-registerform-password", @placeholder = u.s("Forms.Profile.NewPassword", "Write Your new Password here", Model.Lang) })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <div class="col_half col_last">
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "sm-form-control", @id = "js-registerconfirmpass", @placeholder = u.s("Forms.Profile.ConfirmNewPassword", "Confirm Your new Password here", Model.Lang) })
+            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+        </div>
+        <div class="clear"></div>
+        <div class="alert alert-success alert-dismissable" id="js-update-success" style="display: none;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            @u.s("Forms.Profile.ProflieUpdatedSuccessfully", "Your profile have been updated.", Model.Lang)
+        </div>
+        <div class="col_full">
+            <button class="button button-3d button-light-blue nomargin" id="js-profile-form-update">@u.s("Forms.Profile.UpdateButton", "Update", Model.Lang)</button>
+            <img class="icon-spin-register-form" src="~/images/preloader.gif" alt="Preloader" style="display:none;">
+        </div>
+        if (!ViewData.ModelState.IsValid)
+        {
+            ModelState error;
+            ViewData.ModelState.TryGetValue("FormGenericError", out error);
+            if (error != null)
+            {
+                foreach (var e in error.Errors)
+                {
+                    <span class="text-danger js-errormsg" style="color:#ff0042; font-weight:400;">@e.ErrorMessage</span>
+                }
+            }
+        }
+        if (Model.HasPasswordChanged)
+        {
+            <span class="text-success">Your password had successfully changed</span>
+        }
+    }
+</div>
+
+
+
+

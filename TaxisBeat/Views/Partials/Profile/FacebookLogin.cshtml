@@ -1,0 +1,53 @@
+﻿@using Umbraco.Web
+@using TaxisBeat.Controllers
+@using TaxisBeat.Models
+@model LoginModel
+
+<div class="col_full center nobottommargin nobottompadding" >
+    <h4 style="margin-bottom: 15px;">Ή συνδεθείτε με</h4>
+    @using (Html.BeginUmbracoForm<AuthSurfaceController>("ValidateFacebook", null, new { @class = "fb-login-form", @id = "fb-login-form" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.AccessToken)
+        @Html.Hidden("Lang", Culture)
+        @Html.Hidden("CurrentPageId", UmbracoContext.Current.PageId.Value)
+        <div class="col_full center">
+            <button id="js-facebooklogin" class="button button-rounded si-facebook si-colored button-full-width">Facebook</button>
+        </div>
+    }
+</div>
+<script>
+    var statusChangeCallback = function (response) {
+    $(".js-process-registerlogin").fadeIn(400);
+    var userResponse = response;
+    if (response.status === "connected") {
+        $("#AccessToken").val(userResponse.authResponse.accessToken);
+        var form = $("#fb-login-form");
+        $.ajax({
+            url: "/",
+            type: "POST",
+            data: form.serialize(),
+            dataType: "json",
+            success: function (data) {
+                if (data.Success && data.IsValidMember) {
+                    successfullLogin(data);
+                } else if (!data.IsValidMember && data.NeedsRegister) {
+                    facebookRegister(data.Data);
+                }
+                else {
+                    showMessageFacebookModal(data.ErrorMessage);
+                }
+            },
+            error: function (xhr, resp, text) {
+                console.log(xhr, resp, text);
+            },
+            complete: function () {
+                $(".js-process-registerlogin").hide();
+            }
+        });
+    }
+    else {
+        showMessageFacebookModal("You must connect to your Facebook Account and Accept the policy of requesting your email and public profile data in order to login to site.")
+    }
+};
+</script>

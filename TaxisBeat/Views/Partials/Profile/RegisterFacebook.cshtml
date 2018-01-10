@@ -1,0 +1,58 @@
+﻿@using Umbraco.Web
+@model RegisterFacebookModel
+<div id="register-facebook-wrapper">
+    @using (Html.BeginUmbracoForm<AuthSurfaceController>("RegisterFacebook", null, new { @class = "register-fb-form", @id = "register-fb-form" }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(z => z.AccessToken)
+        @Html.HiddenFor(z => z.FacebookUserId)
+        @Html.HiddenFor(z => z.Cpid)
+        <div class="col_half">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <div class="col_half col_last">
+            @Html.LabelFor(m => m.Surname)
+            @Html.TextBoxFor(m => m.Surname, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.Surname)
+        </div>
+        <div class="col_half">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.Username)
+        </div>
+        <div class="col_half col_last">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "sm-form-control", @id = "js-register-email" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="col_half">
+            @Html.LabelFor(m => m.MobilePhone)
+            @Html.TextBoxFor(m => m.MobilePhone, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.MobilePhone)
+        </div>
+        <div class="clearfix"></div>
+        <div class="col_full nobottommargin">
+            <button class="button button-3d si-facebook si-colored nomargin" id="register-fb-form-submit">Register With Facebook!</button>
+        </div>
+
+        if (!ViewData.ModelState.IsValid)
+        {
+            ModelState error;
+            ViewData.ModelState.TryGetValue("FormGenericError", out error);
+            if (error != null)
+            {
+                <div class="col_full topmargin-sm nobottommargin">
+                    @foreach (var e in error.Errors)
+                    {
+                        <span class="text-danger" style="color:#ff0042; font-weight:400;">@e.ErrorMessage</span>
+                    }
+                </div>
+            }
+        }
+        <div class="clearfix"></div>
+    }
+</div>

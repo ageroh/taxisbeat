@@ -1,0 +1,77 @@
+﻿@using Umbraco.Web
+@using System.Globalization
+@using System.Threading
+@model ContactFormViewModel
+@{ 
+    var curCulture = new CultureInfo(Model.Lang);
+    Thread.CurrentThread.CurrentUICulture = curCulture;
+}
+
+@if (TempData["alreadysent"] != null && (bool)TempData["alreadysent"] == true)
+{
+    <h2>@u.s("Forms.ContactUs.AlreadySent", "Thank you for your message we will contact you soon.")</h2>
+}
+else if(TempData["success"] == null || (bool)TempData["success"] == false)
+{
+    <h3>@u.s("Forms.ContactUs.Header", "Send us an Email")</h3>
+
+    using (Html.BeginUmbracoForm<ContactUsSurfaceController>("ContactUsSubmit", FormMethod.Post, new { @class = "nobottommargin" , @id = "js-contact-us-form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.Hidden("Website", Context.Request.Url.Host)
+        @Html.Hidden("Lang", Culture)
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "sm-form-control required" })
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.Surname)
+            @Html.TextBoxFor(m => m.Surname, new { @class = "sm-form-control required" })
+            @Html.ValidationMessageFor(m => m.Surname)
+        </div>
+        <div class="col_one_third col_last">
+            @Html.LabelFor(m => m.Phone)
+            @Html.TextBoxFor(m => m.Phone, new { @class = "sm-form-control required" })
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+        <div class="clear"></div>
+        <div class="col_two_third">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "sm-form-control email required" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="col_one_third col_last">
+            @Html.LabelFor(m => m.ServiceId)
+            @Html.DropDownListFor(m => m.ServiceId, ContactFormViewModel.ServiceList, "- Please Select -", new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.ServiceId)
+        </div>
+
+        <div class="clear"></div>
+
+        <div class="col_full">
+            @Html.LabelFor(m => m.Message)
+            @Html.TextAreaFor(m => m.Message, 6, 30, new { @class = "sm-form-control required", @placeholder = "" })
+            @Html.ValidationMessageFor(m => m.Message)
+        </div>
+        <div class="col_full">
+            <div class="g-recaptcha" data-sitekey="6LfCWSYUAAAAAC9PzFkne4L0aKaNINFMUa19sH_K" data-callback="recaptchaContactUs" ></div>
+            <script src='https://www.google.com/recaptcha/api.js?hl=@(curCulture.TwoLetterISOLanguageName)' type="text/javascript"></script>
+        </div>
+        
+        if (ViewBag.ReCaptchaMessage != string.Empty)
+        {
+            <div class="col_full alert alert-warning">
+                @ViewBag.ReCaptchaMessage
+            </div>
+        }
+        <div class="col_full">
+            <button class="button nomargin" type="submit" id="template-contactform-submit" name="template-contactform-submit">Send Message</button>
+        </div>
+    }
+}
+else
+{
+    <h2>We will be in touch with you soon. Thank you!</h2>
+}

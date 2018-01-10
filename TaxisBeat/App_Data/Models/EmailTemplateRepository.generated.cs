@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>People</summary>
-	[PublishedContentModel("people")]
-	public partial class People : PublishedContentModel, IContentBase, INavigationBase
+	/// <summary>Email Template Repository</summary>
+	[PublishedContentModel("emailTemplateRepository")]
+	public partial class EmailTemplateRepository : PublishedContentModel, INavigationBase
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "people";
+		public new const string ModelTypeAlias = "emailTemplateRepository";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public People(IPublishedContent content)
+		public EmailTemplateRepository(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,36 +40,9 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<People, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<EmailTemplateRepository, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Featured People
-		///</summary>
-		[ImplementPropertyType("featuredPeople")]
-		public IEnumerable<IPublishedContent> FeaturedPeople
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("featuredPeople"); }
-		}
-
-		///<summary>
-		/// Content
-		///</summary>
-		[ImplementPropertyType("bodyText")]
-		public Newtonsoft.Json.Linq.JToken BodyText
-		{
-			get { return Umbraco.Web.PublishedContentModels.ContentBase.GetBodyText(this); }
-		}
-
-		///<summary>
-		/// Page Title: The title of the page, this is also the first text in a google search result. The ideal length is between 40 and 60 characters
-		///</summary>
-		[ImplementPropertyType("pageTitle")]
-		public string PageTitle
-		{
-			get { return Umbraco.Web.PublishedContentModels.ContentBase.GetPageTitle(this); }
 		}
 
 		///<summary>
