@@ -482,7 +482,6 @@
     <Content Include="Views\People.cshtml" />
     <Content Include="Views\Person.cshtml" />
     <Content Include="Views\Product.cshtml" />
-    <Content Include="Views\Products.cshtml" />
     <Content Include="Views\MacroPartials\FeaturedProducts.cshtml" />
     <Content Include="Views\MacroPartials\LatestBlogposts.cshtml" />
     <Content Include="Views\Services.cshtml" />
@@ -496,6 +495,7 @@
     <Content Include="Views\Partials\Various\ContactUs.cshtml" />
     <Content Include="Views\Partials\Various\ForgottenPassword.cshtml" />
     <Content Include="Views\Partials\Various\ResetPassword.cshtml" />
+    <Content Include="Views\ResetPasswordPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
