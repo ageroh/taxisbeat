@@ -9,7 +9,7 @@ namespace TaxisBeat.Models
     public class LoginModel : PostRedirectModel
     {
         [Required(ErrorMessage = "Το Email ειναι υποχρεωτικό")]
-        [DisplayName("Email or Username")]
+        [DisplayName("Email / Username")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Ο Κωδικός ειναι απαραίτητος για να κάνετε Login!")]

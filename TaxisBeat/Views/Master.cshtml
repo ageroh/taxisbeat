@@ -95,6 +95,8 @@
     <div id="gotoTop" class="icon-angle-up"></div>
     @Scripts.Render("~/bundles/libs")
     @Scripts.Render("~/bundles/validation")
+    @Scripts.Render("~/bundles/taxisbeat")
+    @RenderSection("ScriptsBottom", false)
     <script>
         var currentPageId = @(CurrentPage.Id);
         var globalLang = '@Culture';

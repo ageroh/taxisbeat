@@ -187,7 +187,7 @@ namespace TaxisBeat.Controllers
             switch (curPage?.GetTemplateAlias())
             {
                 case Constants.HomeTemplateAlias:
-                case Constants.ProfileTemplateAlias:
+                //case Constants.ProfileTemplateAlias:
                     return RedirectToUmbracoPage(curPage?.Parent?.Id ?? pageId);
                 default:
                     return RedirectToUmbracoPage(pageId);
@@ -632,7 +632,7 @@ namespace TaxisBeat.Controllers
         }
 
         [HttpGet]
-        public ActionResult HomeLoggedIn(string cpid, string lang = "en-US")
+        public ActionResult HomeLoggedIn(string cpid)
         {
             var member = Members.GetCurrentMember();
 
@@ -649,7 +649,7 @@ namespace TaxisBeat.Controllers
             }
             var currentPage = Umbraco.TypedContent(cpid);
             //var wonParticipation = (await ParticipationHelper.Default.GetWonParticipationsRecent(memberId, umbracoHelper))?.FirstOrDefault();
-            var profilePage = Umbraco.TypedContent(Constants.ProfileTemplateAlias);
+            var profilePage = Umbraco.TypedContent(Constants.ProfilePage);
             return Json(new
             {
                 Success = true,

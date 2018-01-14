@@ -11,28 +11,28 @@ namespace TaxisBeat.Models
 
         [DisplayName("Name")]
         [Required(ErrorMessage = "Name is required.")]
-        [RegularExpression(Constants.NameLatinGreekRegex, ErrorMessage = "Check your name, it must consist only of latin/greek characters and dashes.")]
+        [RegularExpression(Constants.NameLatinGreekRegex, ErrorMessage = "Πρέπει να απότελείται μόνο από λατινικούς/ελληνικούς χαρακτήρες και παύλες.")]
         public string Name { get; set; }
 
         [DisplayName("Surname")]
         [Required(ErrorMessage = "Το Επώνυμο είναι υποχρεωτικό")]
-        [RegularExpression(Constants.SurnameLatinGreekRegex, ErrorMessage = "Check your Surname, it must consist only of latin/greek characters and dashes.")]
+        [RegularExpression(Constants.SurnameLatinGreekRegex, ErrorMessage = "Πρέπει να απότελείται μόνο από λατινικούς/ελληνικούς χαρακτήρες και παύλες.")]
         public string Surname { get; set; }
 
         [DisplayName("Email")]
-        [Required(ErrorMessage = "Email is required.")]
-        [RegularExpression(Constants.EmailRegex, ErrorMessage = "Email is invalid.")]
+        [Required(ErrorMessage = "Το Email είναι υποχρεωτικό")]
+        [RegularExpression(Constants.EmailRegex, ErrorMessage = "Το Email δεν είναι σωστό")]
         [Remote("CheckEmailIsUsed", "AuthSurface", ErrorMessage = "Η διευθυνσή email ήδη χρησιμοποιείται.")]
         public string Email { get; set; }
 
         [DisplayName("Username")]
-        [Required(ErrorMessage = "Username is required.")]
-        [RegularExpression(Constants.UsernameRegex, ErrorMessage = "Your username is invalid")]
+        [Required(ErrorMessage = "Το Username είναι υποχρεωτικό")]
+        [RegularExpression(Constants.UsernameRegex, ErrorMessage = "Το username δεν είναι σωστό")]
         [Remote("CheckUsernamelIsUsed", "AuthSurface", ErrorMessage = "Το username ήδη χρησιμοποιείται.")]
         public string Username { get; set; }
 
         [DisplayName("Κινητό")]
-        [RegularExpression(Constants.MobileNumber, ErrorMessage = "Check your mobile phone, is invalid.")]
+        [RegularExpression(Constants.MobileNumber, ErrorMessage = "Το κινητό τηλέφωνο δεν είναι σωστό.")]
         public string MobilePhone { get; set; }
 
         public bool MemberCreated { get; set; }

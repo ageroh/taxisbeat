@@ -52,6 +52,18 @@ namespace UmbracoCmsTicketMania.Code
                     //"~/scripts/libs/jquery.unobtrusive-ajax.js"
                 ));
 
+
+            bundles.Add(new ScriptBundle("~/bundles/taxisbeat").Include(
+                    "~/scripts/login.js",
+                    "~/scripts/register.js",
+                    "~/scripts/profile.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/loginregister").Include(
+                    "~/scripts/loginRegisterHandle.js"
+                ));
+
+
             //bundles.Add(new ScriptBundle("~/bundles/extralibs").Include(
             //        "~/scripts/libs/jquery.flexslider.js",
             //        "~/scripts/libs/jquery.infinitescroll.js",

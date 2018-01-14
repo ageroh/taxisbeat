@@ -14,9 +14,11 @@
         @Html.PasswordFor(m => m.Password, new { @class = "form-control required not-dark", @id = "js-loginform-password" })
         @Html.ValidationMessageFor(m => m.Password)
     </div>
-    <a class="forgot-password" id="js-forgotpassword-btn" href="javascript: void(0);">Forgot Password?</a>
-    <div class="col_full">
-        <button class="button button-3d button-torch-red nomargin button-long button-full-width" id="login-form-submit" name="login-form-submit" value="login">Login</button>
+    <div class="col_half">
+        <button class="button button-3d button-torch-red nomargin button-long button-full-width" id="login-form-submit" name="login-form-submit" value="login">Είσοδος</button>
+    </div>
+    <div class="col_half col_last">
+        <a class="forgot-password" id="js-forgotpassword-btn" href="javascript: void(0);">Ξεχάσατε τον Κωδικό σας?</a>
     </div>
     <span id="target-login-result" style="color:#ff0042; font-weight:400; display:none;"></span>
 }

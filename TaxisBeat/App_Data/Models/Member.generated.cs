@@ -46,6 +46,42 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Email Verify Hash
+		///</summary>
+		[ImplementPropertyType("emailVerifyHash")]
+		public string EmailVerifyHash
+		{
+			get { return this.GetPropertyValue<string>("emailVerifyHash"); }
+		}
+
+		///<summary>
+		/// Has Verified Email
+		///</summary>
+		[ImplementPropertyType("hasVerifiedEmail")]
+		public bool HasVerifiedEmail
+		{
+			get { return this.GetPropertyValue<bool>("hasVerifiedEmail"); }
+		}
+
+		///<summary>
+		/// Member Is Over 18
+		///</summary>
+		[ImplementPropertyType("memberIsOver18")]
+		public bool MemberIsOver18
+		{
+			get { return this.GetPropertyValue<bool>("memberIsOver18"); }
+		}
+
+		///<summary>
+		/// Member Language
+		///</summary>
+		[ImplementPropertyType("memberLanguage")]
+		public string MemberLanguage
+		{
+			get { return this.GetPropertyValue<string>("memberLanguage"); }
+		}
+
+		///<summary>
 		/// Is Approved
 		///</summary>
 		[ImplementPropertyType("umbracoMemberApproved")]

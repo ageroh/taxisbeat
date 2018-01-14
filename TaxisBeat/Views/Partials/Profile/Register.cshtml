@@ -53,11 +53,10 @@
                 @Html.ValidationMessageFor(m => m.AcceptedTerms, null, new { @style = "display: block;" })
             </div>
             <div class="clearfix"></div>
-            <div class="registration-btn center">
+            <div class="col_half registration-btn center">
                 <button class="button button-3d button-torch-red button-long" id="register-form-submit">Εγγραφή</button>
             </div>
-            <div class="line line-sm"></div>
-            <div class="col_full center nobottommargin nobottompadding">
+            <div class="col_half col_last nobottommargin nobottompadding">
                 <h4 style="margin-bottom: 15px;">Ή εγγραφή μέσω</h4>
                 <div class="col_full center">
                     <a class="button button-rounded si-facebook si-colored" id="js-register-with-facebook">Facebook</a>
@@ -67,8 +66,8 @@
         else
         {
             <div class="col_full center topmargin-sm">
-                <span class="text-success col_full notopmargin" style="display:inline-block;">Your account have been created, please verify your email to logon!</span>
-                <button class="button button-3d nomargin" data-dismiss="modal" id="js-member-created">Thank You for Registering!</button>
+                <span class="text-success col_full notopmargin" style="display:inline-block;">Ο λογαριασμός σας έχει δημιουργηθεί με επιτυχία. Για να εισέλθετε επιβεβαιώστε πρώτα το email σας.</span>
+                <button class="button button-3d nomargin" data-dismiss="modal" id="js-member-created">Ευχαριστούμε!</button>
             </div>
         }
         if (!ViewData.ModelState.IsValid)

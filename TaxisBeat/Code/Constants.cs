@@ -5,7 +5,6 @@ namespace TaxisBeat.Code
     public class Constants
     {
         public const string HomeTemplateAlias = "Home";
-        public const string ProfileTemplateAlias = "Profile";
         public const string MemberAlias = "Member";
 
         //Email Templates
@@ -36,9 +35,15 @@ namespace TaxisBeat.Code
         public const int EmailVerifiedPageId = 1151;
         public const int ResetPasswordPageId = 1152;
         public const int TermAndConditionPage = 1154;
+        public const int ProfilePage = 1160;
 
         // Cache Keys
         public const string CacheKey_GetDOYs = "Cache_GetDoys_";
 
+        // Cache Seconds
+        public const int CacheSm = 60;
+        public const int CacheBg = 60 * 10;
+        public const int CacheLg = 60 * 30;
+        
     }
 }
