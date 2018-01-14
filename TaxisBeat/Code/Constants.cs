@@ -35,6 +35,7 @@ namespace TaxisBeat.Code
         public const int HomePageId = 1094;
         public const int EmailVerifiedPageId = 1151;
         public const int ResetPasswordPageId = 1152;
+        public const int TermAndConditionPage = 1154;
 
         // Cache Keys
         public const string CacheKey_GetDOYs = "Cache_GetDoys_";

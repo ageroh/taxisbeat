@@ -102,5 +102,31 @@ namespace TaxisBeat.Code
                     table.Columns.RemoveAt(index);
             }
         }
+
+        /// <summary>
+        /// Named or indexed argument string formatter.
+        /// E.g. "Found {count} results".Format(new {count = 5});
+        /// E.g. "Found {0} results".Format(5);
+        /// </summary>
+        /// <param name="format">the string to format</param>
+        /// <param name="source">anonymous object to replace property values into formatted string placeholders</param>
+        /// <returns></returns>
+        public static string Format2(this string format, params object[] source)
+        {
+            return format.HenriFormat(source);
+        }
+
+        /// <summary>
+        /// Named or indexed argument string formatter.
+        /// E.g. "Found {count} results".Format(new {count = 5});
+        /// E.g. "Found {0} results".Format(5);
+        /// </summary>
+        /// <param name="format">the string to format</param>
+        /// <param name="formatHandler">a func that takes in the name of the placeholder string and the format(if used) and returns the string that should be replaced with. Returning null will leave the original placeholder+format value on</param>
+        /// <returns></returns>
+        public static string Format2(this string format, Func<string, string, string> formatHandler)
+        {
+            return format.HenriFormat(formatHandler);
+        }
     }
 }

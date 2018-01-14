@@ -1,4 +1,5 @@
-﻿@using ContentModels = Umbraco.Web.PublishedContentModels;
+﻿@using System.Web.Optimization
+@using ContentModels = Umbraco.Web.PublishedContentModels;
 @using Umbraco.Core
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
@@ -8,25 +9,19 @@
     ContentModels.Home home = Model.Content.Site() as ContentModels.Home;
     var colorTheme = Umbraco.GetPreValueAsString(home.ColorTheme);
     var font = Umbraco.GetPreValueAsString(home.Font);
+    var siteDesciption = Model.Content.GetPropertyValue("siteDescription", true);
+    var siteKeywords = Model.Content.GetPropertyValue("siteMeta", true);
 }
 <!DOCTYPE html>
 <html dir="ltr" lang="el-GR">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="">
+    <meta name="description" content="@siteDesciption">
     <meta name="author" content="TaxisBeat.gr" />
-    <meta name="google-site-verification" content="EQRDBpZDK3gAOOmQ_h3hhTe-hpG-h_24YGV52N7N5sM" />
 
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
-    <link rel="stylesheet" href="/css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="/css/colors.css" type="text/css" />
-    <link rel="stylesheet" href="/css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="/css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css" />
-    <link rel="stylesheet" href="/css/responsive.css" type="text/css" />
+    @Styles.RenderFormat("<link href=\"{0}\" type=\"text/css\" charset=\"utf-8\" rel=\"stylesheet\"/>", "~/bundles/css")
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@Model.Content.Name - @home.Sitename</title>
@@ -49,9 +44,9 @@
             <div id="header-wrap">
                 <div class="container clearfix">
                     <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-                        <div id="logo">
+                    <div id="logo">
                         @if (home.SiteLogoRetina != null && !string.IsNullOrEmpty(home.SiteLogoRetina.Url))
-                        { 
+                        {
                             <a href="/" class="retina-logo" data-dark-logo="@home.SiteLogoRetina.Url">
                                 <img src="@home.SiteLogoRetina.Url" alt="@home.Sitename">
                             </a>
@@ -68,25 +63,25 @@
                         }
                     </div>
 
-					<div id="top-account" class="dropdown">
-						<a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
-						<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-							<li><a href="#">To Προφίλ Μου</a></li>
-							<li><a href="#">Αιτήσεις <span class="badge">5</span></a></li>
-							<li><a href="#">Νέα Αίτηση</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">Αποσύνδεση <i class="icon-signout"></i></a></li>
-						</ul>
-					</div>
+                    <div id="top-account" class="dropdown">
+                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">To Προφίλ Μου</a></li>
+                            <li><a href="#">Αιτήσεις <span class="badge">5</span></a></li>
+                            <li><a href="#">Νέα Αίτηση</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Αποσύνδεση <i class="icon-signout"></i></a></li>
+                        </ul>
+                    </div>
 
                     <nav id="primary-menu">
                         @Html.Partial("~/Views/Partials/Navigation/TopNavigation.cshtml")
                         @*<div id="top-search">
-                            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-                            <form action="search.html" method="get">
-                                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
-                            </form>
-                        </div>*@
+                                <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+                                <form action="search.html" method="get">
+                                    <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+                                </form>
+                            </div>*@
                     </nav>
                 </div>
             </div>
@@ -98,20 +93,17 @@
     <!-- Go To Top
     ============================================= -->
     <div id="gotoTop" class="icon-angle-up"></div>
-
-
-    <!-- External JavaScripts
-    ============================================= -->
-    @*<script src="@Url.Content("~/scripts/umbraco-starterkit-app.js")"></script>*@
-    <script type="text/javascript" src="/js/jquery.js"></script>
-    <script type="text/javascript" src="/js/plugins.js"></script>
-    <script type="text/javascript" src="/js/functions.js"></script>
+    @Scripts.Render("~/bundles/libs")
+    @Scripts.Render("~/bundles/validation")
     <script>
+        var currentPageId = @(CurrentPage.Id);
+        var globalLang = '@Culture';
+        checkIfLoggedIn();
+
         $(function () {
             $("#side-navigation").tabs({ show: { effect: "fade", duration: 400 } });
         });
     </script>
-
     <!-- Zoho Chat -->
     <script type="text/javascript">
         var $zoho = $zoho || {}; $zoho.salesiq = $zoho.salesiq ||

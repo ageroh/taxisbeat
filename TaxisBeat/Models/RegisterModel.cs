@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using Constants = TaxisBeat.Code.Constants;
 using Foolproof;
+using Umbraco.Core.Models;
+using TaxisBeat.Code;
 
 namespace TaxisBeat.Models
 {
@@ -42,9 +44,15 @@ namespace TaxisBeat.Models
         [EqualTo("Password", ErrorMessage = "Pasword and Confirm Password must be equal")]
         [StringLength(20, ErrorMessage = "Password must be at least 8 characters", MinimumLength = 8)]
         public string ConfirmPassword { get; set; }
-        
+
+        [MustBeTrue(ErrorMessage = "Πρέπει να αποδεχθείτε τους όρους & προυποθέσεις για να κάνετε εγγραφή στο site.")]
+        public bool AcceptedTerms { get; set; }
+
         public string Cpid { get; set; }
         public bool MemberCreated { get; set; }
+
+        public string TermsAndConditionsUrl { get; set; }
+
         public AccountType AccountType { get; set; }
         // releated to Competitions properties here
 
@@ -52,10 +60,11 @@ namespace TaxisBeat.Models
         {
         }
 
-        public RegisterModel(int cpid)
+        public RegisterModel(IPublishedContent termsPage, int cpid)
         {
             MemberCreated = false;
             Cpid = cpid.ToString();
+            TermsAndConditionsUrl = termsPage?.Url;
         }
     }
 

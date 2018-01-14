@@ -10,7 +10,6 @@
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.AccessToken)
         @Html.Hidden("Lang", Culture)
-        @Html.Hidden("CurrentPageId", UmbracoContext.Current.PageId.Value)
         <div class="col_full center">
             <button id="js-facebooklogin" class="button button-rounded si-facebook si-colored button-full-width">Facebook</button>
         </div>

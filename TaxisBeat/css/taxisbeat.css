@@ -1,0 +1,43 @@
+﻿/* Font families */
+@font-face {
+    font-family: CYN_Coaching;
+    src: url("/fonts/CYN_Coaching/CYN_Coaching.otf") format('opentype'), url("/fonts/CYN_Coaching/CYN_CoachingSlanted.otf") format('opentype');
+}
+
+@font-face {
+    font-family: CYN_Reset;
+    src: url("/fonts/CYN_Reset_otf/CYN_Reset.otf") format('opentype'), url("/fonts/CYN_Reset_otf/CYN_Reset.otf") format('opentype');
+}
+
+@font-face {
+    font-family: ACBlur;
+    src: url("/fonts/ACBlur/ACBlur/ACBlur.ttf") format('truetype'), url("/fonts/ACBlur/ACBlur/ACBlur.otf") format('opentype');
+}
+
+@font-face {
+    font-family: ACTypoGrotesk;
+    src: url("/fonts/ACTypoGrotesk/ACTypoGrotesk/ACTypoGrotesk.otf") format('opentype'), url("/fonts/ACTypoGrotesk/ACTypoGrotesk/ACTypoGrotesk.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: ACGeosans;
+    src: url("/fonts/ACGeosansLight/ACGeosansLight/ACGeosansLight.otf") format('opentype'), url("/fonts/ACGeosansLight/ACGeosansLight/ACGeosansLight.ttf") format('truetype');
+}
+
+* {
+    font-family: ACGeosans;
+}
+
+
+/* Unobtrusive sexy validation */
+.sm-form-control.input-validation-error,
+.form-control.input-validation-error {
+    border-color: #E42C3E;
+}
+
+span.field-validation-error {
+    margin-top: 5px;
+    color: #E42C3E;
+    font-weight: 400;
+}
+

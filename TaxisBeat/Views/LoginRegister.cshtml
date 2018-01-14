@@ -14,7 +14,8 @@
             <div class="col_one_third nobottommargin">
 
                 <div class="well well-lg nobottommargin">
-                    <form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
+                    @Html.Action("LoginIndex", "AuthSurface")
+                    @*<form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
 
                         <h3>Είσοδος στο Λογαριασμό σας</h3>
 
@@ -33,7 +34,7 @@
                             <a href="#" class="fright">Ξεχάσατε τον κωδικό σας?</a>
                         </div>
 
-                    </form>
+                    </form>*@
                 </div>
 
             </div>
@@ -44,8 +45,8 @@
                 <h3>Don't have an Account? Register Now.</h3>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, vel odio non dicta provident sint ex autem mollitia dolorem illum repellat ipsum aliquid illo similique sapiente fugiat minus ratione.</p>
-
-                <form id="register-form" name="register-form" class="nobottommargin" action="#" method="post">
+                 @Html.Action("RegisterIndex", "AuthSurface")
+                @*<form id="register-form" name="register-form" class="nobottommargin" action="#" method="post">
 
                     <div class="col_half">
                         <label for="register-form-name">Name:</label>
@@ -87,7 +88,7 @@
                         <button class="button button-3d button-black nomargin" id="register-form-submit" name="register-form-submit" value="register">Register Now</button>
                     </div>
 
-                </form>
+                </form>*@
 
             </div>
 

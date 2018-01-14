@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
@@ -203,6 +207,9 @@
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -242,6 +249,9 @@
     </Reference>
     <Reference Include="UmbracoExamine, Version=0.7.0.23594, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\UmbracoCms.Core.7.7.7\lib\net45\UmbracoExamine.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -299,12 +309,6 @@
     <Content Include="App_Plugins\Terratype\Views\grid.html" />
     <Content Include="App_Plugins\Terratype\Views\grid.overlay.html" />
     <Content Include="App_Plugins\Terratype\Views\label.standard.html" />
-    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.js" />
-    <Content Include="Client Scripts\mvcfoolproof.unobtrusive.min.js" />
-    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.js" />
-    <Content Include="Client Scripts\MvcFoolproofJQueryValidation.min.js" />
-    <Content Include="Client Scripts\MvcFoolproofValidation.js" />
-    <Content Include="Client Scripts\MvcFoolproofValidation.min.js" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -334,6 +338,7 @@
     <Content Include="css\magnific-popup.css" />
     <Content Include="css\responsive.css" />
     <Content Include="css\style.css" />
+    <Content Include="css\taxisbeat.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="images\landing\landing1.jpg" />
@@ -343,9 +348,17 @@
     <Content Include="images\preloader-dark%402x.gif" />
     <Content Include="images\preloader-dark.gif" />
     <Content Include="images\preloader.gif" />
-    <Content Include="js\functions.js" />
-    <Content Include="js\jquery.js" />
-    <Content Include="js\plugins.js" />
+    <Content Include="Scripts\libs\functions.js" />
+    <Content Include="Scripts\libs\jquery.js" />
+    <Content Include="Scripts\libs\plugins.js" />
+    <None Include="Scripts\libs\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\libs\jquery-1.8.0.js" />
+    <Content Include="Scripts\libs\jquery-1.8.0.min.js" />
+    <None Include="Scripts\libs\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\libs\jquery.validate.js" />
+    <Content Include="Scripts\libs\jquery.validate.min.js" />
+    <Content Include="Scripts\libs\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\libs\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -367,19 +380,18 @@
     <Compile Include="App_Data\Models\NavigationBase.generated.cs" />
     <Compile Include="App_Data\Models\Product.generated.cs" />
     <Compile Include="App_Data\Models\Services.generated.cs" />
-    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Code\BundleConfig.cs" />
     <Compile Include="Code\CommonExtensions.cs" />
     <Compile Include="Code\Constants.cs" />
     <Compile Include="Code\ContentTypeHelper.cs" />
     <Compile Include="Code\DateHelperAndExtensions.cs" />
     <Compile Include="Code\DateOfBirthAttribute.cs" />
+    <Compile Include="Code\HenriFormatter.cs" />
+    <Compile Include="Code\MustBeTrueAttribute.cs" />
     <Compile Include="Code\VATNumberAttribute.cs" />
     <Compile Include="Code\EmailHelper.cs" />
     <Compile Include="Code\HashHelper.cs" />
     <Compile Include="Controllers\AuthSurfaceController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Models\FavoriteTeamModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginResponse.cs" />
@@ -388,6 +400,7 @@
     <Compile Include="Models\RegisterFacebookModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -413,7 +426,6 @@
     <Content Include="config\BaseRestExtensions.config" />
     <Content Include="config\applications.config" />
     <Content Include="config\404handlers.config" />
-    <Content Include="App_Data\umbraco.config" />
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
     <Content Include="App_Plugins\Terratype\package.manifest" />

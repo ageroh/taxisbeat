@@ -20,8 +20,6 @@ namespace TaxisBeat.Controllers
 {
     public class AuthSurfaceController : SurfaceController
     {
-        // once and forever, hold terms and condition pages
-        public static readonly IEnumerable<IPublishedContent> TermAndConditionPages = new UmbracoHelper(UmbracoContext.Current).TypedSearch("terms conditions");
         public static readonly int ExpirePasswordMinutes = int.Parse(ConfigurationManager.AppSettings.Get("ExpirePasswordMinutes"));
 
         [AllowAnonymous]
@@ -391,7 +389,7 @@ namespace TaxisBeat.Controllers
         {
             // get terms and termsandconditionpage
             var curPage = pid != null ? Umbraco.TypedContent(pid) : CurrentPage;
-            return PartialView("Profile/Register", new RegisterModel(curPage.Id));
+            return PartialView("Profile/Register", new RegisterModel(Umbraco.TypedContent(Constants.TermAndConditionPage), curPage.Id));
         }
 
         [AllowAnonymous]
