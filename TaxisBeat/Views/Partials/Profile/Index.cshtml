@@ -1,16 +1,11 @@
 ﻿@using Umbraco.Web;
 @model ProfileViewModel
-@{ 
-    // Set correctly the Culture
-    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Model.Lang);
-}
 <div id="js-profile-form-wrapper">
     <p class="">Sub heading</p>
     @using (Html.BeginUmbracoForm<ProfileSurfaceController>("Update", null, new { @class = "js-profile-form", @id = "js-profile-form" }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-        @Html.Hidden("Lang", Model.Lang)
 
         <div class="form-process" id="js-profile-process"></div>
         <div class="col_one_third">
@@ -42,26 +37,21 @@
             }
             else
             {
-                @Html.TextBoxFor(m => m.AmkaNumber, new { @class = "sm-form-control", @disabled = "diabled", @readonly  = "readonly"})
+                @Html.TextBoxFor(m => m.AmkaNumber, new { @class = "sm-form-control", @disabled = "diabled", @readonly = "readonly" })
             }
             @Html.ValidationMessageFor(m => m.AmkaNumber)
         </div>
         <div class="col_one_third col_last">
-            @Html.LabelFor(m => m.MemberIdentity)
-            @if (string.IsNullOrWhiteSpace(Model.MemberIdentity) || !ViewData.ModelState.IsValid)
+            @Html.LabelFor(m => m.IdentityNumber)
+            @if (string.IsNullOrWhiteSpace(Model.IdentityNumber) || !ViewData.ModelState.IsValid)
             {
-                @Html.TextBoxFor(m => m.MemberIdentity, new { @class = "sm-form-control" })
+                @Html.TextBoxFor(m => m.IdentityNumber, new { @class = "sm-form-control" })
             }
             else
             {
-                @Html.TextBoxFor(m => m.MemberIdentity, new { @class = "sm-form-control", @disabled = "diabled" , @readonly = "readonly" })
+                @Html.TextBoxFor(m => m.IdentityNumber, new { @class = "sm-form-control", @disabled = "diabled", @readonly = "readonly" })
             }
-            @Html.ValidationMessageFor(m => m.MemberIdentity)
-        </div>
-        <div class="col_one_third">
-            @Html.LabelFor(m => m.DateOfBirthStr)
-            @Html.TextBoxFor(m => m.DateOfBirthStr, new { @class = "sm-form-control", @disabled = "disabled" })
-            @Html.ValidationMessageFor(m => m.DateOfBirthStr)
+            @Html.ValidationMessageFor(m => m.IdentityNumber)
         </div>
         <div class="col_one_third">
             @Html.LabelFor(m => m.Username)
@@ -69,43 +59,56 @@
             @Html.ValidationMessageFor(m => m.Username)
         </div>
         <div class="col_one_third col_last">
-            @Html.LabelFor(m => m.FavoriteTeamModel.FavoriteTeam)
-            @Html.DropDownListFor(m => m.FavoriteTeamModel.FavoriteTeam, Model.FavoriteTeamModel.FavoriteTeams(Model.Lang), u.s("Forms.SelectDropdownValue", "- Please Select -", Model.Lang), new { @class = "sm-form-control" })
-            @Html.ValidationMessageFor(m => m.FavoriteTeamModel.FavoriteTeam)
+            @Html.LabelFor(m => m.DoyModel.Doy)
+            @Html.DropDownListFor(m => m.DoyModel.Doy, Model.DoyModel.AllDoy(), "- Παρακαλώ Επιλέξτε -", new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.DoyModel.Doy)
         </div>
-
         <div class="col_one_third">
-            @Html.LabelFor(m => m.CompanyUsername)
-            @Html.TextBoxFor(m => m.CompanyUsername, new { @class = "sm-form-control" })
-            @Html.ValidationMessageFor(m => m.CompanyUsername)
+            @Html.LabelFor(m => m.DateOfBirthStr)
+            <div class="dropdown js-birthdate-cells">
+                @Html.DropDownList("Day", Model.Days, "Ημέρα", new { @class = "js-day sm-form-control dropdown", style = "width:33%;" })
+                @Html.DropDownList("Month", Model.Months, "Μήνας", new { @class = "js-month sm-form-control dropdown", style = "width:33%;" })
+                @Html.DropDownList("Year", Model.Years, "Έτος", new { @class = "js-year sm-form-control dropdown", style = "width:31%;" })
+            </div>
+            @Html.HiddenFor(m => m.DateOfBirthStr, new { @class = "js-date-of-birth opac", tabindex = "1000" })
+            @Html.ValidationMessageFor(m => m.DateOfBirthStr)
         </div>
-        <div class="col_one_third col_last">
-            @Html.LabelFor(m => m.FacebookUsername)
-            @Html.TextBoxFor(m => m.FacebookUsername, new { @class = "sm-form-control" })
-            @Html.ValidationMessageFor(m => m.FacebookUsername)
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.Address)
+            @Html.TextBoxFor(m => m.Address, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.Address)
         </div>
-
-        <div class="clear"></div>
-        <h4 class="topmargin-sm">
-            @u.s("Forms.Profile.ChangePasswordLabel", "Change your password if you wish:", Model.Lang)
-        </h4>
-        <div class="col_half">
-            @Html.LabelFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password, new { @class = "sm-form-control", @id = "js-registerform-password", @placeholder = u.s("Forms.Profile.NewPassword", "Write Your new Password here", Model.Lang) })
-            @Html.ValidationMessageFor(m => m.Password)
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.PostalCode)
+            @Html.TextBoxFor(m => m.PostalCode, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.PostalCode)
         </div>
-        <div class="col_half col_last">
-            @Html.LabelFor(m => m.ConfirmPassword)
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "sm-form-control", @id = "js-registerconfirmpass", @placeholder = u.s("Forms.Profile.ConfirmNewPassword", "Confirm Your new Password here", Model.Lang) })
-            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+        <div class="col_one_third">
+            @Html.LabelFor(m => m.VatNumber)
+            @Html.TextBoxFor(m => m.VatNumber, new { @class = "sm-form-control" })
+            @Html.ValidationMessageFor(m => m.VatNumber)
         </div>
+        @*<div class="clear"></div>
+            <h4 class="topmargin-sm">
+                @u.s("Forms.Profile.ChangePasswordLabel", "Change your password if you wish:", Model.Lang)
+            </h4>
+            <div class="col_half">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new { @class = "sm-form-control", @id = "js-registerform-password", @placeholder = u.s("Forms.Profile.NewPassword", "Write Your new Password here", Model.Lang) })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div class="col_half col_last">
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "sm-form-control", @id = "js-registerconfirmpass", @placeholder = u.s("Forms.Profile.ConfirmNewPassword", "Confirm Your new Password here", Model.Lang) })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div>*@
         <div class="clear"></div>
         <div class="alert alert-success alert-dismissable" id="js-update-success" style="display: none;">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            @u.s("Forms.Profile.ProflieUpdatedSuccessfully", "Your profile have been updated.", Model.Lang)
+            Το προφίλ σας ενημερώθηκε επιτυχώς
         </div>
         <div class="col_full">
-            <button class="button button-3d button-light-blue nomargin" id="js-profile-form-update">@u.s("Forms.Profile.UpdateButton", "Update", Model.Lang)</button>
+            <button class="button button-3d button-light-blue nomargin" id="js-profile-form-update">Ενημέρωση</button>
             <img class="icon-spin-register-form" src="~/images/preloader.gif" alt="Preloader" style="display:none;">
         </div>
         if (!ViewData.ModelState.IsValid)
@@ -122,7 +125,7 @@
         }
         if (Model.HasPasswordChanged)
         {
-            <span class="text-success">Your password had successfully changed</span>
+            <span class="text-success">Ο κωδικός σας άλλαξε με επιτυχία</span>
         }
     }
 </div>

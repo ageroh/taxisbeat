@@ -348,8 +348,15 @@
     <Content Include="images\preloader-dark%402x.gif" />
     <Content Include="images\preloader-dark.gif" />
     <Content Include="images\preloader.gif" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\libs\datepicker.js" />
+    <Content Include="Scripts\libs\daterangepicker.js" />
     <Content Include="Scripts\libs\functions.js" />
     <Content Include="Scripts\libs\jquery.js" />
+    <Content Include="Scripts\libs\moment\locale\el.js" />
+    <Content Include="Scripts\libs\moment\locale\ro.js" />
+    <Content Include="Scripts\libs\moment\moment.js" />
+    <Content Include="Scripts\libs\timepicker.js" />
     <Content Include="Scripts\loginRegisterHandle.js" />
     <Content Include="Scripts\libs\plugins.js" />
     <None Include="Scripts\libs\jquery-1.8.0.intellisense.js" />
@@ -396,7 +403,8 @@
     <Compile Include="Code\EmailHelper.cs" />
     <Compile Include="Code\HashHelper.cs" />
     <Compile Include="Controllers\AuthSurfaceController.cs" />
-    <Compile Include="Models\FavoriteTeamModel.cs" />
+    <Compile Include="Controllers\ProfileSurfaceController.cs" />
+    <Compile Include="Models\DoyModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginResponse.cs" />
     <Compile Include="Models\MemberName.cs" />
@@ -514,6 +522,7 @@
     <Content Include="Views\ResetPasswordPage.cshtml" />
     <Content Include="Views\Partials\Common\FixHeaderCanvas.cshtml" />
     <Content Include="Views\ProfilePage.cshtml" />
+    <Content Include="Views\Partials\Common\Forgery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,6 +1,5 @@
 ﻿@using System.Web.Optimization
 @using ContentModels = Umbraco.Web.PublishedContentModels;
-@using Umbraco.Core
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = null;
@@ -62,16 +61,26 @@
                             <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@home.Sitename</a>
                         }
                     </div>
-
-                    <div id="top-account" class="dropdown">
-                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="icon-user"></i><i class="icon-angle-down"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">To Προφίλ Μου</a></li>
-                            <li><a href="#">Αιτήσεις <span class="badge">5</span></a></li>
-                            <li><a href="#">Νέα Αίτηση</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Αποσύνδεση <i class="icon-signout"></i></a></li>
-                        </ul>
+                    <div>
+                        <div class="form-process" id="js-logging-in"></div>
+                        <div id="js-member-loggedin" style="display: none;">
+                            <div id="top-account" class="dropdown">
+                                <a href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <i class="icon-user"></i>
+                                    <span id="js-memberName"></span>
+                                    <i class="icon-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                    <li><a href="" class="profilepage" data-hash="tab-profile">To Προφίλ Μου</a></li>
+                                    <li><a href="" class="profilepage" data-hash="tab-feeds">Αιτήσεις<span class="badge">5</span></a></li>
+                                    <li><a href="" class="profilepage" data-hash="tab-experiences">Νέα Αίτηση</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a href="/umbraco/Surface/AuthSurface/logout?pageId=@(CurrentPage.Id)" id="js-logout">Αποσύνδεση&nbsp;<i class="icon-signout"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <nav id="primary-menu">
@@ -94,6 +103,7 @@
     ============================================= -->
     <div id="gotoTop" class="icon-angle-up"></div>
     @Scripts.Render("~/bundles/libs")
+    @Scripts.RenderFormat("<script type=\"text/javascript\" src=\"{0}\" charset=\"utf-8\"></script>", "~/bundles/libs/moment")
     @Scripts.Render("~/bundles/validation")
     @Scripts.Render("~/bundles/taxisbeat")
     @RenderSection("ScriptsBottom", false)

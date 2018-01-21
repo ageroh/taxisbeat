@@ -41,3 +41,7 @@ span.field-validation-error {
     font-weight: 400;
 }
 
+/* forms extra */
+.sm-form-control.dropdown {
+    display: inline-block;
+}

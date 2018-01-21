@@ -36,6 +36,7 @@ namespace TaxisBeat.Code
         public const int ResetPasswordPageId = 1152;
         public const int TermAndConditionPage = 1154;
         public const int ProfilePage = 1160;
+        public const int SignInPage = 1138;
 
         // Cache Keys
         public const string CacheKey_GetDOYs = "Cache_GetDoys_";

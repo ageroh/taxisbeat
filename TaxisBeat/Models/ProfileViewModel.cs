@@ -45,14 +45,13 @@ namespace TaxisBeat.Models
         public string Address { get; set; }
 
         [DisplayName("Τ.Κ")]
-        public string PostalCode { get; set; }
+        public int PostalCode { get; set; }
 
         [DisplayName("Α.Φ.Μ.")]
         [VATNumber(ErrorMessage = "Πρέπει να εισάγετε το έγκυρο ΑΦΜ σας.")]
         public string VatNumber { get; set; }
 
-        [DisplayName("Δ.Ο.Υ.")]
-        public string Doy { get; set; }
+        public DoyModel DoyModel { get; set; }
 
         [DisplayName("Ημ/νια Γέννησης")]
         [DateOfBirth]
@@ -100,18 +99,21 @@ namespace TaxisBeat.Models
             Success = false;
         }
 
-        public ProfileViewModel(string lang, Member member)
+        public ProfileViewModel(Member member)
         {
             this.logedInMember = member;
             var tpl = member.ExtractNameSurname();
             Surname = tpl.Surname;
             Name = tpl.Name; 
             Email = member.Email();
-            //MobilePhone = member.MemberMobilePhone;
-            //AmkaNumber = member.MemberAmkaNumber;
-            //MemberIdentity = member.MemberIdentity;
-            //DateOfBirthStr = member.MemberDateOfBirth.ToString("dd/MM/yyyy");
-            //DoyModel = new DoyModel(member.MemberDoy);
+            MobilePhone = member.MemberMobilePhone;
+            AmkaNumber = member.MemberAmkaNumber;
+            IdentityNumber = member.MemberIdentityNumber;
+            PostalCode = member.MemberPostalCode;
+            VatNumber = member.MemberVatNumber;
+            Address = member.MemberAddress;
+            DateOfBirthStr = member.MemberDateOfBirth.ToString("dd/MM/yyyy");
+            DoyModel = new DoyModel(member.MemberDoy);
             Username = member.UserName();
             HasPasswordChanged = false;
             Success = false;

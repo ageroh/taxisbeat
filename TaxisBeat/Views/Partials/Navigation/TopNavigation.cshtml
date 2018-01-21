@@ -1,8 +1,10 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using Constants = TaxisBeat.Code.Constants;
 @using Umbraco.Web;
 @{
     var site = Model.Content.Site();
     var selection = site.Children.Where(x => x.IsVisible());
+    var signinPage = Umbraco.TypedContent(Constants.SignInPage);
 }
 <ul>
     <li class="@Html.Raw(Model.Content.Id == site.Id ? "current" : "")">
@@ -12,6 +14,12 @@
     {
         <li class="@(item.IsAncestorOrSelf(Model.Content) ? "current" : null)">
             <a href="@item.Url"><div>@item.GetPropertyValue("pageTitle")</div></a>
+        </li>
+    }
+    @if (!Umbraco.MemberIsLoggedOn())
+    {
+        <li class="@Html.Raw(Model.Content.Id == site.Id ? "current" : "")">
+            <a href="@signinPage.Url"><div>@signinPage.GetPropertyValue("pageTitle")</div></a>
         </li>
     }
 </ul>

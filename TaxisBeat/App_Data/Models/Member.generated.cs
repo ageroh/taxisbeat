@@ -64,6 +64,51 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Address
+		///</summary>
+		[ImplementPropertyType("memberAddress")]
+		public string MemberAddress
+		{
+			get { return this.GetPropertyValue<string>("memberAddress"); }
+		}
+
+		///<summary>
+		/// Amka Number
+		///</summary>
+		[ImplementPropertyType("memberAmkaNumber")]
+		public string MemberAmkaNumber
+		{
+			get { return this.GetPropertyValue<string>("memberAmkaNumber"); }
+		}
+
+		///<summary>
+		/// Date Of Birth
+		///</summary>
+		[ImplementPropertyType("memberDateOfBirth")]
+		public DateTime MemberDateOfBirth
+		{
+			get { return this.GetPropertyValue<DateTime>("memberDateOfBirth"); }
+		}
+
+		///<summary>
+		/// D.O.Y
+		///</summary>
+		[ImplementPropertyType("memberDoy")]
+		public string MemberDoy
+		{
+			get { return this.GetPropertyValue<string>("memberDoy"); }
+		}
+
+		///<summary>
+		/// Identity Number
+		///</summary>
+		[ImplementPropertyType("memberIdentityNumber")]
+		public string MemberIdentityNumber
+		{
+			get { return this.GetPropertyValue<string>("memberIdentityNumber"); }
+		}
+
+		///<summary>
 		/// Member Is Over 18
 		///</summary>
 		[ImplementPropertyType("memberIsOver18")]
@@ -79,6 +124,33 @@ namespace Umbraco.Web.PublishedContentModels
 		public string MemberLanguage
 		{
 			get { return this.GetPropertyValue<string>("memberLanguage"); }
+		}
+
+		///<summary>
+		/// Mobile Phone
+		///</summary>
+		[ImplementPropertyType("memberMobilePhone")]
+		public string MemberMobilePhone
+		{
+			get { return this.GetPropertyValue<string>("memberMobilePhone"); }
+		}
+
+		///<summary>
+		/// Postal Code
+		///</summary>
+		[ImplementPropertyType("memberPostalCode")]
+		public int MemberPostalCode
+		{
+			get { return this.GetPropertyValue<int>("memberPostalCode"); }
+		}
+
+		///<summary>
+		/// Vat Number
+		///</summary>
+		[ImplementPropertyType("memberVatNumber")]
+		public string MemberVatNumber
+		{
+			get { return this.GetPropertyValue<string>("memberVatNumber"); }
 		}
 
 		///<summary>

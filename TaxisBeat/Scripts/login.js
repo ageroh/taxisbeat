@@ -7,6 +7,8 @@
     $("#primary-menu").addClass("loggedIn");
 
     // reload based on where member is ... maybe not?
+    if (document.location.href.indexOf("signin") > 1) { document.location = "/member-profile/"; }
+
     if (alreadyLoggedIn === false || alreadyLoggedIn === undefined) {
         if (document.location.href.indexOf("member-profile") > 1) { document.location.reload(); }
         if (document.location.href.indexOf("your-experience") > 1) { document.location.reload(); }
@@ -25,7 +27,7 @@
 
 var loginControl = function () {
 
-    // Login form
+    // Login form - AJAX
     $("#login-form").bind("submit", function (e) {
         form = $(this);
         e.preventDefault();
