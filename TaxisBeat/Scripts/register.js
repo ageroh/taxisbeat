@@ -21,7 +21,6 @@
                 data: form.serialize(),
                 success: function (response) {
                     $('#register-form-wrapper').html(response);
-                    //loadDateOfBirth(form);
                 },
                 error: function (xhr, resp, text) {
                     console.log(xhr, resp, text);
@@ -70,7 +69,6 @@
                     }
                     else {
                         $('#register-facebook-wrapper').html(response);
-                        loadDateOfBirth(form);
                     }
                 },
                 error: function (xhr, resp, text) {

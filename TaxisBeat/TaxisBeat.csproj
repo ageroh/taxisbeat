@@ -369,6 +369,7 @@
     <Content Include="Scripts\libs\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\login.js" />
     <Content Include="Scripts\profile.js" />
+    <Content Include="Scripts\profileIndex.js" />
     <Content Include="Scripts\register.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -1,5 +1,8 @@
 ﻿@using Umbraco.Web;
+@using System.Web.Optimization
 @model ProfileViewModel
+
+@Scripts.Render("~/bundles/profileIndex")
 <div id="js-profile-form-wrapper">
     <p class="">Sub heading</p>
     @using (Html.BeginUmbracoForm<ProfileSurfaceController>("Update", null, new { @class = "js-profile-form", @id = "js-profile-form" }, FormMethod.Post))
