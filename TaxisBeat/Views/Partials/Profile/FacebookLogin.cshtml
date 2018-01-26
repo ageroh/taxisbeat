@@ -28,14 +28,15 @@
             data: form.serialize(),
             dataType: "json",
             success: function (data) {
-                if (data.Success && data.IsValidMember) {
-                    successfullLogin(data);
-                } else if (!data.IsValidMember && data.NeedsRegister) {
-                    facebookRegister(data.Data);
+                if (data != null) {
+                    if (data.Success && data.IsValidMember) {
+                        successfullLogin(data);
+                    } else if (!data.IsValidMember && data.NeedsRegister) {
+                        facebookRegister(data.Data);
+                    }
+                    return;
                 }
-                else {
-                    showMessageFacebookModal(data.ErrorMessage);
-                }
+                showMessageFacebookModal(data.ErrorMessage);
             },
             error: function (xhr, resp, text) {
                 console.log(xhr, resp, text);

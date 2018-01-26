@@ -35,8 +35,13 @@ namespace TaxisBeat.Controllers
         {
             // get all data.
             var accessToken = model != null && !string.IsNullOrEmpty(model.AccessToken) ? model.AccessToken : null;
-            var client = new Facebook.FacebookClient(accessToken);
-            if (client == null)
+            Facebook.FacebookClient client = null; 
+            if(accessToken != null)
+            {
+                client = new Facebook.FacebookClient(accessToken);
+            }
+
+            if (accessToken == null || client == null)
             {
                 return Json(new
                 {
@@ -397,7 +402,7 @@ namespace TaxisBeat.Controllers
         public ActionResult RegisterFacebookIndex(int? pid)
         {
             var curPage = pid != null ? Umbraco.TypedContent(pid) : CurrentPage;
-            return PartialView("Profile/RegisterFacebook", new RegisterFacebookModel(curPage.Id));
+            return PartialView("Profile/RegisterFacebook", new RegisterFacebookModel(Umbraco.TypedContent(Constants.TermAndConditionPage), curPage.Id));
         }
 
         [HttpPost]
@@ -494,7 +499,6 @@ namespace TaxisBeat.Controllers
                 newMember.SetValue("emailVerifyHash", "ok");
                 newMember.SetValue("hasVerifiedEmail", true);
                 newMember.IsApproved = true;
-                newMember.SetValue("memberMobilePhone", model.MobilePhone);
                 newMember.SetValue("facebookUserId", model.FacebookUserId);
                 newMember.SetValue("memberisOver18", true);
                 Services.MemberService.Save(newMember);
@@ -512,7 +516,7 @@ namespace TaxisBeat.Controllers
                 {
                     ModelState.AddModelError("FormGenericError", "Συνέβη κάποιο σοβαρό σφάλμα. Παρακαλώ προσπαθήστε ξάνα.");
                     LogHelper.Warn(typeof(AuthSurfaceController), $"Cannot Login Facebook new member: {model.Email}");
-                    return PartialView("Profile/Register", model);
+                    return PartialView("Profile/RegisterFacebook", model);
                 }
                 return GetLoggedInMember(newMember.Name, newMember.Id, curPage.Id.ToString(), Umbraco);
             }
@@ -520,7 +524,7 @@ namespace TaxisBeat.Controllers
             {
                 LogHelper.Error(typeof(AuthSurfaceController), $"Error while registering Facebook member {model.Email}", ex);
                 ModelState.AddModelError("FormGenericError", "Συνέβη κάποιο σοβαρό σφάλμα. Παρακαλώ προσπαθήστε ξάνα. Αλλιώς επικοινωνήστε με το support μας.");
-                return PartialView("Profile/Register", model);
+                return PartialView("Profile/RegisterFacebook", model);
             }
         }
 
@@ -645,7 +649,7 @@ namespace TaxisBeat.Controllers
         {
             if (string.IsNullOrEmpty(memberName) || cpid == null || umbracoHelper == null)
             {
-                return null;
+                return Json(new { Success = false, ErrorMessage = "Some error occured!" });
             }
             var currentPage = Umbraco.TypedContent(cpid);
             //var wonParticipation = (await ParticipationHelper.Default.GetWonParticipationsRecent(memberId, umbracoHelper))?.FirstOrDefault();

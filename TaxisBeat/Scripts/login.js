@@ -37,7 +37,7 @@ var loginControl = function () {
             return false;
         }
         else {
-            $(".modal-login-form").find(".js-process-registerlogin").fadeIn(400);
+            $("#login-form").find(".js-process-registerlogin").fadeIn(400);
             if (form.data('requestRunning')) {
                 return;
             }
@@ -63,7 +63,7 @@ var loginControl = function () {
                     console.log("login data:", response);
                 },
                 complete: function () {
-                    $(".modal-login-form").find(".js-process-registerlogin").fadeOut(400);
+                    $("#login-form").find(".js-process-registerlogin").fadeOut(400);
                     form.data('requestRunning', false);
                 }
             });
@@ -71,17 +71,10 @@ var loginControl = function () {
     });
 
     // close login modal, open passwordforget modal
-    $(".modal-login-form").on("click", "#js-forgotpassword-btn", function (e) {
-        $(".modal-login-form").modal("hide");
+    $("#login-form").on("click", "#js-forgotpassword-btn", function (e) {
         $(".modal-forgotpassword").modal("show");
     });
-
-    // close login modal, open register modal
-    $(".modal-login-form").on("click", "#js-registerform-btn", function (e) {
-        $(".modal-login-form").modal("hide");
-        $(".modal-register-form").modal("show");
-    });
-
+    
     $("#js-forgot-password").bind("submit", function (e) {
         form = $(this);
         e.preventDefault();

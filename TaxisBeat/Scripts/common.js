@@ -20,3 +20,14 @@ var getParameterByName = function (name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
+var loadDateOfBirth = function (form) {
+    if ($(form).find(".js-date-of-birth").length > 0) {
+        if ($(form).find(".js-date-of-birth").val() !== "") {
+            var split = $(form).find(".js-date-of-birth").val().split("/");
+            $(form).find(".js-day").val(split[0]);
+            $(form).find(".js-month").val(split[1]);
+            $(form).find(".js-year").val(split[2]);
+            //isDateBirthValid(form);
+        }
+    }
+};

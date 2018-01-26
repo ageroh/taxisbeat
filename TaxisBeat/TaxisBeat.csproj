@@ -349,6 +349,7 @@
     <Content Include="images\preloader-dark.gif" />
     <Content Include="images\preloader.gif" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\facebooklogin.js" />
     <Content Include="Scripts\libs\datepicker.js" />
     <Content Include="Scripts\libs\daterangepicker.js" />
     <Content Include="Scripts\libs\functions.js" />
@@ -405,12 +406,13 @@
     <Compile Include="Code\HashHelper.cs" />
     <Compile Include="Controllers\AuthSurfaceController.cs" />
     <Compile Include="Controllers\ProfileSurfaceController.cs" />
+    <Compile Include="Models\BaseRegisterModel.cs" />
     <Compile Include="Models\DoyModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginResponse.cs" />
     <Compile Include="Models\MemberName.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
-    <Compile Include="Models\RegisterFacebookModel.cs" />
+    <Compile Include="Models\RegisterFacebookModel .cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -524,6 +526,8 @@
     <Content Include="Views\Partials\Common\FixHeaderCanvas.cshtml" />
     <Content Include="Views\ProfilePage.cshtml" />
     <Content Include="Views\Partials\Common\Forgery.cshtml" />
+    <Content Include="Views\Partials\Common\FacebookSdk.cshtml" />
+    <Content Include="Views\Partials\Common\FacebookModals.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

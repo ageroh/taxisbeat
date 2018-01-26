@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Constants = TaxisBeat.Code.Constants;
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
     Layout = null;
@@ -45,21 +46,21 @@
                     <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
                     <div id="logo">
                         @if (home.SiteLogoRetina != null && !string.IsNullOrEmpty(home.SiteLogoRetina.Url))
-                        {
-                            <a href="/" class="retina-logo" data-dark-logo="@home.SiteLogoRetina.Url">
-                                <img src="@home.SiteLogoRetina.Url" alt="@home.Sitename">
-                            </a>
-                        }
+                    {
+                        <a href="/" class="retina-logo" data-dark-logo="@home.SiteLogoRetina.Url">
+                            <img src="@home.SiteLogoRetina.Url" alt="@home.Sitename">
+                        </a>
+                }
                         @if (home.SiteLogo != null && !string.IsNullOrEmpty(home.SiteLogo.Url))
-                        {
-                            <a href="/" class="standard-logo" data-dark-logo="@home.SiteLogo.Url">
-                                <img src="@home.SiteLogo.Url" alt="@home.Sitename">
-                            </a>
-                        }
-                        else
-                        {
-                            <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@home.Sitename</a>
-                        }
+                    {
+                        <a href="/" class="standard-logo" data-dark-logo="@home.SiteLogo.Url">
+                            <img src="@home.SiteLogo.Url" alt="@home.Sitename">
+                        </a>
+                }
+                else
+                {
+                    <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@home.Sitename</a>
+            }
                     </div>
                     <div>
                         <div class="form-process" id="js-logging-in"></div>
@@ -86,11 +87,11 @@
                     <nav id="primary-menu">
                         @Html.Partial("~/Views/Partials/Navigation/TopNavigation.cshtml")
                         @*<div id="top-search">
-                                <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-                                <form action="search.html" method="get">
-                                    <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
-                                </form>
-                            </div>*@
+                            <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
+                            <form action="search.html" method="get">
+                                <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+                            </form>
+                        </div>*@
                     </nav>
                 </div>
             </div>
@@ -98,6 +99,7 @@
 
         @RenderBody()
 
+        @Html.CachedPartial("Common/FacebookModals", Model.Content, Constants.CacheLg)
     </div>
     <!-- Go To Top
     ============================================= -->
@@ -107,6 +109,7 @@
     @Scripts.Render("~/bundles/validation")
     @Scripts.Render("~/bundles/taxisbeat")
     @RenderSection("ScriptsBottom", false)
+    @Html.CachedPartial("Common/FacebookSdk", Model.Content, Constants.CacheLg)
     <script>
         var currentPageId = @(CurrentPage.Id);
         var globalLang = '@Culture';

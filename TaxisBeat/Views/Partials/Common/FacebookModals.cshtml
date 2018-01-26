@@ -1,0 +1,54 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+<div class="modal modal-forgotpassword" tabindex="-1" role="dialog" id="js-forgotpassword-modal" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-focus-on="input:first">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">Forgot Password</h3>
+                </div>
+                <div class="modal-body">
+                    @Html.Action("ForgotPassword", "AuthSurface")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal-facebookregister-form" tabindex="-1" role="dialog" aria-labelledby="fbRegister" aria-hidden="true" data-focus-on="input:first">
+    <div class="form-process js-process-registerlogin"></div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">Register through your Facebook account</h3>
+                </div>
+                <div class="modal-body">
+                    @Html.Action("RegisterFacebookIndex", "AuthSurface")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Facebook Error Modal-->
+<div class="modal modal-facebookmessage" tabindex="-1" role="dialog" id="js-facebookmodal-message" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-focus-on="input:first">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modal-title" id="myModalLabel">Facebook Login</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="col_full">
+                        <span id="js-message"></span>
+                    </div>
+                    <div class="col_full">
+                        <button class="button button-3d button-black nomargin" id="js-close" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

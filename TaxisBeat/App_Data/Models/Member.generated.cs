@@ -55,6 +55,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Facebook User Id
+		///</summary>
+		[ImplementPropertyType("facebookUserId")]
+		public string FacebookUserId
+		{
+			get { return this.GetPropertyValue<string>("facebookUserId"); }
+		}
+
+		///<summary>
 		/// Has Verified Email
 		///</summary>
 		[ImplementPropertyType("hasVerifiedEmail")]

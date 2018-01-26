@@ -1,16 +1,4 @@
-﻿// load values if exists
-var loadDateOfBirth = function (form) {
-    if ($(form).find(".js-date-of-birth").length > 0) {
-        if ($(form).find(".js-date-of-birth").val() !== "") {
-            var split = $(form).find(".js-date-of-birth").val().split("/");
-            $(form).find(".js-day").val(split[0]);
-            $(form).find(".js-month").val(split[1]);
-            $(form).find(".js-year").val(split[2]);
-            //isDateBirthValid(form);
-        }
-    }
-};
-$(document).ready(function () {
+﻿$(document).ready(function () {
     var dtTemp = "";
     $("#js-profile-form-wrapper").on("change", ".js-day, .js-month, .js-year", function () {
         let form = $(this).parent().parent().parent();
@@ -25,7 +13,7 @@ $(document).ready(function () {
         else {
             $(".js-date-of-birth").val("");
         }
-        if (day != "" && month != "" && year != "") {
+        if (day !== "" && month !== "" && year !== "") {
             $(".js-date-of-birth").valid();
         }
     });

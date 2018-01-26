@@ -117,3 +117,21 @@ var checkIfLoggedIn = function () {
             $("#js-logging-in").hide();
         });
 };
+
+var facebookRegister = function (userDetail) {
+    $('.js-process-registerlogin').hide();
+    fillInRegisterFacebook(userDetail, $('.modal-facebookregister-form'));
+    $('.modal-facebookregister-form').modal("show");
+};
+var fillInRegisterFacebook = function (userDetail, form) {
+    $(form).find("#Name").val(userDetail.Name);
+    $(form).find("#Surname").val(userDetail.Surname);
+    $(form).find("#Username").val(userDetail.Username);
+    $(form).find("#js-register-email").val(userDetail.Email);
+    $(form).find("#AccessToken").val(userDetail.AccessToken);
+    $(form).find("#FacebookUserId").val(userDetail.UserId);
+    if (userDetail.BirthDateFormat !== "") {
+        $(form).find(".js-date-of-birth").val(userDetail.BirthDateFormat);
+        loadDateOfBirth($(form));
+    }
+};

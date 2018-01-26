@@ -1,0 +1,25 @@
+﻿@using System.Configuration
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '@(ConfigurationManager.AppSettings.Get("FacebookAppId"))',
+            cookie: true,
+            xfbml: true,
+            version: 'v2.11'
+        });
+        FB.AppEvents.logPageView();
+
+        FB.Event.subscribe('auth.login', function (response) {
+            //alert('logged in');
+            console.log("facebook logged in");
+        });
+    };
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/el_GR/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+</script>

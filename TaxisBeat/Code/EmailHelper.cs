@@ -142,7 +142,7 @@ namespace TaxisBeat.Code
             if (emailTemplate == null)
             {
                 // then try get it through Email Type.
-                emailTemplate = EmailTemplateRepo?.Children()?.FirstOrDefault(z => (string)z.Properties["EmailTemplateCode"].Value == emailTemplateName);
+                emailTemplate = EmailTemplateRepo?.Children()?.FirstOrDefault(z => (string)z.Properties["emailTemplateCode"].Value == emailTemplateName);
                 if (emailTemplate == null)
                 {
                     LogHelper.Warn(typeof(EmailHelper), $"The Templated with Name: {emailTemplateName} was not found in Content tree of Email Templates!");

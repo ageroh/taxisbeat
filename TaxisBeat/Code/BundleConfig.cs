@@ -50,7 +50,8 @@ namespace UmbracoCmsTicketMania.Code
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/loginregister").Include(
-                    "~/scripts/loginRegisterHandle.js"
+                    "~/scripts/loginRegisterHandle.js",
+                    "~/scripts/facebooklogin.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/profileIndex").Include(
