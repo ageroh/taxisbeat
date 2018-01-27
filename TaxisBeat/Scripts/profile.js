@@ -178,6 +178,9 @@ var bindProfileTabLink = function () {
 
 // Profile Page - Lazy Load Tabs
 var resolveTab = function (tabname) {
+    if (tabname == "tab-login" || tabname == "tab-register" || typeof tabname == "undefined" ) {
+        return;
+    }
     let lang = $(".tab-container").data("lang");
     $("#js-profile-tab-loader").fadeIn(200);
     $.get("/umbraco/Surface/ProfileSurface/" + tabname + "?lang=" + lang + "&cpid=" + currentPageId, )

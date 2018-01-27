@@ -3,13 +3,14 @@
 @using TaxisBeat.Models
 @model LoginModel
 
-<div class="col_full center nobottommargin nobottompadding" >
+<div class="col_full center nobottommargin nobottompadding">
     <h4 style="margin-bottom: 15px;">Ή συνδεθείτε με</h4>
     @using (Html.BeginUmbracoForm<AuthSurfaceController>("ValidateFacebook", null, new { @class = "fb-login-form", @id = "fb-login-form" }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.AccessToken)
         @Html.Hidden("Lang", Culture)
+        @Html.Hidden("CurrentPageId", UmbracoContext.Current.PageId.Value)
         <div class="col_full center">
             <button id="js-facebooklogin" class="button button-rounded si-facebook si-colored button-full-width">Facebook</button>
         </div>
@@ -31,10 +32,11 @@
                 if (data != null) {
                     if (data.Success && data.IsValidMember) {
                         successfullLogin(data);
+                        return;
                     } else if (!data.IsValidMember && data.NeedsRegister) {
                         facebookRegister(data.Data);
+                        return;
                     }
-                    return;
                 }
                 showMessageFacebookModal(data.ErrorMessage);
             },

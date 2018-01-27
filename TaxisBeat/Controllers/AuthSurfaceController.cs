@@ -651,6 +651,7 @@ namespace TaxisBeat.Controllers
             {
                 return Json(new { Success = false, ErrorMessage = "Some error occured!" });
             }
+
             var currentPage = Umbraco.TypedContent(cpid);
             //var wonParticipation = (await ParticipationHelper.Default.GetWonParticipationsRecent(memberId, umbracoHelper))?.FirstOrDefault();
             var profilePage = Umbraco.TypedContent(Constants.ProfilePage);
