@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Product</summary>
-	[PublishedContentModel("product")]
-	public partial class Product : PublishedContentModel
+	/// <summary>Service</summary>
+	[PublishedContentModel("service")]
+	public partial class Service : PublishedContentModel
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "product";
+		public new const string ModelTypeAlias = "service";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Product(IPublishedContent content)
+		public Service(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,7 +40,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Product, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Service, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
@@ -73,24 +73,6 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Features
-		///</summary>
-		[ImplementPropertyType("features")]
-		public IEnumerable<IPublishedContent> Features
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("features"); }
-		}
-
-		///<summary>
-		/// Photos: You can add multiple photos - the first one will be the default and used in overviews and lists
-		///</summary>
-		[ImplementPropertyType("photos")]
-		public IEnumerable<IPublishedContent> Photos
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("photos"); }
-		}
-
-		///<summary>
 		/// Price
 		///</summary>
 		[ImplementPropertyType("price")]
@@ -100,12 +82,12 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Product Name
+		/// Service Name
 		///</summary>
-		[ImplementPropertyType("productName")]
-		public string ProductName
+		[ImplementPropertyType("serviceName")]
+		public string ServiceName
 		{
-			get { return this.GetPropertyValue<string>("productName"); }
+			get { return this.GetPropertyValue<string>("serviceName"); }
 		}
 
 		///<summary>

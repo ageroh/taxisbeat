@@ -391,7 +391,7 @@
     <Compile Include="App_Data\Models\Image.generated.cs" />
     <Compile Include="App_Data\Models\Member.generated.cs" />
     <Compile Include="App_Data\Models\NavigationBase.generated.cs" />
-    <Compile Include="App_Data\Models\Product.generated.cs" />
+    <Compile Include="App_Data\Models\Service.generated.cs" />
     <Compile Include="App_Data\Models\Services.generated.cs" />
     <Compile Include="Code\BundleConfig.cs" />
     <Compile Include="Code\CommonExtensions.cs" />
@@ -508,7 +508,6 @@
     <Content Include="Views\Partials\SectionHeader.cshtml" />
     <Content Include="Views\People.cshtml" />
     <Content Include="Views\Person.cshtml" />
-    <Content Include="Views\Product.cshtml" />
     <Content Include="Views\MacroPartials\FeaturedProducts.cshtml" />
     <Content Include="Views\MacroPartials\LatestBlogposts.cshtml" />
     <Content Include="Views\Services.cshtml" />
@@ -528,6 +527,7 @@
     <Content Include="Views\Partials\Common\Forgery.cshtml" />
     <Content Include="Views\Partials\Common\FacebookSdk.cshtml" />
     <Content Include="Views\Partials\Common\FacebookModals.cshtml" />
+    <Content Include="Views\Service.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

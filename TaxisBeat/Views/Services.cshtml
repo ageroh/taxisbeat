@@ -1,4 +1,4 @@
-﻿@inherits UmbracoTemplatePage<Products>
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ContentPage>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
     Layout = "Master.cshtml";
@@ -19,15 +19,17 @@
                 <a class="nav-link nav-link--black" href="">Other</a>
             </nav>
         -->
+
         <div class="product-grid">
-            @if (Model.Content.FeaturedProducts != null)
+            @if (Model.Content != null && Model.Content.Children != null)
             {
-                foreach (Product product in Model.Content.FeaturedProducts)
+                foreach (Service service in Model.Content.Children)
                 {
-                    <a href="@product.Url" class="product-grid__item" style="background-image: url('@product.Photos.FirstOrDefault().Url')">
+                    @*<a href="@service.Url" class="product-grid__item" style="background-image: url('@service.Photos.FirstOrDefault().Url')">*@
+                    <a href="@service.Url" class="product-grid__item" style="background-image: url('')">
                         <div class="product-grid__item__overlay">
-                            <div class="product-grid__item__name">@product.ProductName</div>
-                            <div class="product-grid__item__price">@Model.Content.DefaultCurrency @product.Price.ToString("F")</div>
+                            <div class="product-grid__item__name">@service.ServiceName</div>
+                            <div class="product-grid__item__price">€ @service.Price.ToString("F")</div>
                         </div>
                     </a>
                 }

@@ -46,24 +46,6 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Currency: This is just used to prefix pricing
-		///</summary>
-		[ImplementPropertyType("defaultCurrency")]
-		public string DefaultCurrency
-		{
-			get { return this.GetPropertyValue<string>("defaultCurrency"); }
-		}
-
-		///<summary>
-		/// Featured Products
-		///</summary>
-		[ImplementPropertyType("featuredProducts")]
-		public IEnumerable<IPublishedContent> FeaturedProducts
-		{
-			get { return this.GetPropertyValue<IEnumerable<IPublishedContent>>("featuredProducts"); }
-		}
-
-		///<summary>
 		/// Content
 		///</summary>
 		[ImplementPropertyType("bodyText")]

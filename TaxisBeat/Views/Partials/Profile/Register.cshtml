@@ -45,23 +45,27 @@
                 <label class="checkbox">
                     @Html.EditorFor(m => m.AcceptedTerms)
                     @Html.Raw("Αποδέχομαι τους <a href={TermsAndConditionsUrl} target=\"_blank\">Όρους & Προυποθέσεις</a>."
-                        .Format2(new
-                        {
-                            TermsAndConditionsUrl = Model.TermsAndConditionsUrl
-                        }))
+                                       .Format2(new
+                                       {
+                                           TermsAndConditionsUrl = Model.TermsAndConditionsUrl
+                                       }))
                 </label>
                 @Html.ValidationMessageFor(m => m.AcceptedTerms, null, new { @style = "display: block;" })
             </div>
             <div class="clearfix"></div>
-            <div class="col_half registration-btn center">
+            <div class="col_full registration-btn center">
                 <button class="button button-3d button-torch-red button-long" id="register-form-submit">Εγγραφή</button>
             </div>
-            <div class="col_half col_last nobottommargin nobottompadding">
-                <h4 style="margin-bottom: 15px;">Ή εγγραφή μέσω</h4>
-                <div class="col_full center">
+            <hr />
+            <div class="col_full col_last center nobottommargin nobottompadding">
+                <div class="col_half">
+                    <h4>Ή εγγραφή μέσω</h4>
+                </div>
+                <div class="col_half col_last">
                     <a class="button button-rounded si-facebook si-colored" id="js-register-with-facebook">Facebook</a>
                 </div>
             </div>
+
         }
         else
         {
