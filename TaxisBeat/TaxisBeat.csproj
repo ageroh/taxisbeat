@@ -505,7 +505,7 @@
     <Content Include="Views\Partials\CategoryLinks.cshtml" />
     <Content Include="Views\Partials\Navigation\SubNavigation.cshtml" />
     <Content Include="Views\Partials\Navigation\TopNavigation.cshtml" />
-    <Content Include="Views\Partials\SectionHeader.cshtml" />
+    <Content Include="Views\Partials\Common\SectionHeader.cshtml" />
     <Content Include="Views\People.cshtml" />
     <Content Include="Views\Person.cshtml" />
     <Content Include="Views\MacroPartials\FeaturedProducts.cshtml" />

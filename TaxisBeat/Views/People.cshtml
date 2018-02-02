@@ -4,17 +4,14 @@
     Layout = "Master.cshtml";
 }
 @helper SocialLink(string content, string service)
-{
-    if (!string.IsNullOrEmpty(content))
     {
-        <a class="employee-grid__item__contact-item" href="http://@(service).com/@content">@service</a>
-    }
-}       
-
-@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
-
+        if (!string.IsNullOrEmpty(content))
+        {
+            <a class="employee-grid__item__contact-item" href="http://@(service).com/@content">@service</a>
+        }
+}
+@Html.Partial("Common/SectionHeader")
 <section class="section">
-
     <div class="container">
         <!-- todo: implement department filter -->
         <!--
@@ -49,5 +46,4 @@
             }
         </div>
     </div>
-
 </section>

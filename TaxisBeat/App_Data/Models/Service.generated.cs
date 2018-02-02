@@ -82,12 +82,30 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Service Icon
+		///</summary>
+		[ImplementPropertyType("serviceIcon")]
+		public string ServiceIcon
+		{
+			get { return this.GetPropertyValue<string>("serviceIcon"); }
+		}
+
+		///<summary>
 		/// Service Name
 		///</summary>
 		[ImplementPropertyType("serviceName")]
 		public string ServiceName
 		{
 			get { return this.GetPropertyValue<string>("serviceName"); }
+		}
+
+		///<summary>
+		/// Service Photo
+		///</summary>
+		[ImplementPropertyType("servicePhoto")]
+		public IPublishedContent ServicePhoto
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("servicePhoto"); }
 		}
 
 		///<summary>

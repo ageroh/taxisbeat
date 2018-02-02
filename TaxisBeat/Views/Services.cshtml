@@ -2,39 +2,166 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
     Layout = "Master.cshtml";
+    var services = Model.Content != null && Model.Content.Children != null ? Model.Content.Children.Cast<Service>().ToList() : null;
 }
-@Html.Partial("~/Views/Partials/SectionHeader.cshtml")
-
-<section class="section">
-
-    <div class="container">
-
-        <!-- todo: implement category selector -->
-        <!--
-            <nav class="nav-bar nav-bar--center nav-bar--air-bottom">
-                <a class="nav-link nav-link--black nav-link--active" href="">All</a>
-                <a class="nav-link nav-link--black" href="">Clothing</a>
-                <a class="nav-link nav-link--black" href="">Instruments</a>
-                <a class="nav-link nav-link--black" href="">Accessories</a>
-                <a class="nav-link nav-link--black" href="">Other</a>
-            </nav>
-        -->
-
-        <div class="product-grid">
-            @if (Model.Content != null && Model.Content.Children != null)
+@Html.Partial("Common/FixHeaderCanvas")
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+            @if (services != null)
             {
-                foreach (Service service in Model.Content.Children)
+                for (int i = 1; i < services.Count() + 1; i++)
                 {
-                    @*<a href="@service.Url" class="product-grid__item" style="background-image: url('@service.Photos.FirstOrDefault().Url')">*@
-                    <a href="@service.Url" class="product-grid__item" style="background-image: url('')">
-                        <div class="product-grid__item__overlay">
-                            <div class="product-grid__item__name">@service.ServiceName</div>
-                            <div class="product-grid__item__price">€ @service.Price.ToString("F")</div>
+                    var service = services[i - 1];
+
+                    <div class="col_one_third @(i % 3 == 0 ? "col_last" : string.Empty) @( i > 2 ? "nobottommargin" : string.Empty)">
+                        <div class="feature-box fbox-center fbox-outline fbox-effect nobottomborder">
+                            <div class="fbox-icon">
+                                <a href="@service.Url"><i class="icon-@(service.ServiceIcon) i-alt"></i></a>
+                            </div>
+                            <h3>@service.ServiceName<span class="subtitle">@service.Description</span></h3>
+                            <h2>€ @service.Price.ToString("F")</h2>
                         </div>
-                    </a>
+                    </div>
+                    if (i % 3 == 0)
+                    {
+                        <div class="clear"></div>
+                    }
+
                 }
             }
+
         </div>
+
+
+        <div class="container clearfix">
+
+            <div class="heading-block center">
+                <h2>Pricing.</h2>
+                <span>We believe in Flexible Costing.</span>
+            </div>
+
+            <div class="pricing bottommargin clearfix">
+
+                <div class="col-md-3">
+
+                    <div class="pricing-box">
+                        <div class="pricing-title">
+                            <h3>Starter</h3>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-unit">&euro;</span>7<span class="price-tenure">/mo</span>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><strong>Full</strong> Access</li>
+                                <li><i class="icon-code"></i> Source Files</li>
+                                <li><strong>100</strong> User Accounts</li>
+                                <li><strong>1 Year</strong> License</li>
+                                <li>Phone &amp; Email Support</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <a href="#" class="btn btn-danger btn-block btn-lg">Sign Up</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="pricing-box best-price">
+                        <div class="pricing-title">
+                            <h3>Professional</h3>
+                            <span>Most Popular</span>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-unit">&euro;</span>12<span class="price-tenure">/mo</span>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><strong>Full</strong> Access</li>
+                                <li><i class="icon-code"></i> Source Files</li>
+                                <li><strong>1000</strong> User Accounts</li>
+                                <li><strong>2 Years</strong> License</li>
+                                <li>
+                                    <i class="icon-star3"></i>
+                                    <i class="icon-star3"></i>
+                                    <i class="icon-star3"></i>
+                                    <i class="icon-star3"></i>
+                                    <i class="icon-star3"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <a href="#" class="btn btn-danger btn-block btn-lg bgcolor border-color">Sign Up</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="pricing-box">
+                        <div class="pricing-title">
+                            <h3>Business</h3>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-unit">&euro;</span>19<span class="price-tenure">/mo</span>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><strong>Full</strong> Access</li>
+                                <li><i class="icon-code"></i> Source Files</li>
+                                <li><strong>500</strong> User Accounts</li>
+                                <li><strong>3 Years</strong> License</li>
+                                <li>Phone &amp; Email Support</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <a href="#" class="btn btn-danger btn-block btn-lg">Sign Up</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="pricing-box">
+                        <div class="pricing-title">
+                            <h3>Enterprise</h3>
+                        </div>
+                        <div class="pricing-price">
+                            <span class="price-unit">&euro;</span>29<span class="price-tenure">/mo</span>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><strong>Full</strong> Access</li>
+                                <li><i class="icon-code"></i> Source Files</li>
+                                <li><strong>1000</strong> User Accounts</li>
+                                <li><strong>5 Years</strong> License</li>
+                                <li>Phone &amp; Email Support</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-action">
+                            <a href="#" class="btn btn-danger btn-block btn-lg">Sign Up</a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="promo promo-dark promo-flat promo-full topmargin footer-stick">
+            <div class="container clearfix">
+                <h3>Call us today at <span>+91.22.57412541</span> or Email us at <span>support@canvas.com</span></h3>
+                <span>We strive to provide Our Customers with Top Notch Support to make their Theme Experience Wonderful</span>
+                <a href="#" class="button button-xlarge button-rounded">Start Browsing</a>
+            </div>
+        </div>
+
     </div>
 
-</section>
+</section><!-- #content end -->
