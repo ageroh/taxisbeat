@@ -46,21 +46,21 @@
                     <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
                     <div id="logo">
                         @if (home.SiteLogoRetina != null && !string.IsNullOrEmpty(home.SiteLogoRetina.Url))
-                    {
-                        <a href="/" class="retina-logo" data-dark-logo="@home.SiteLogoRetina.Url">
-                            <img src="@home.SiteLogoRetina.Url" alt="@home.Sitename">
-                        </a>
-                }
+                        {
+                            <a href="/" class="retina-logo" data-dark-logo="@home.SiteLogoRetina.Url">
+                                <img src="@home.SiteLogoRetina.Url" alt="@home.Sitename">
+                            </a>
+                        }
                         @if (home.SiteLogo != null && !string.IsNullOrEmpty(home.SiteLogo.Url))
-                    {
-                        <a href="/" class="standard-logo" data-dark-logo="@home.SiteLogo.Url">
-                            <img src="@home.SiteLogo.Url" alt="@home.Sitename">
-                        </a>
-                }
-                else
-                {
-                    <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@home.Sitename</a>
-            }
+                        {
+                            <a href="/" class="standard-logo" data-dark-logo="@home.SiteLogo.Url">
+                                <img src="@home.SiteLogo.Url" alt="@home.Sitename">
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@home.Sitename</a>
+                        }
                     </div>
                     <div>
                         <div class="form-process" id="js-logging-in"></div>
